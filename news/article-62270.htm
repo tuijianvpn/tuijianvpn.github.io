@@ -2,23 +2,23 @@
 <html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://tuijianvpn.github.io/news/article-61661.htm" />
+        <link rel="canonical" href="https://tuijianvpn.github.io/news/article-62270.htm" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mysql中如何存储日期数据</title>
-        <meta name="description" content="一.DateTime类型 1,特点 1)以YYYY-MM-DD HH:MM:SS[.fraction]格式存储日期时间,在mysql5.6前可以只能存储到秒,在5.6后能存储到微秒 2)datetim" />
+    <title>解决Redis并发带来的雪崩，击穿和穿透问题，以及搭建一个Redis伪集群</title>
+        <meta name="description" content="Redis集群的分类： 1.主从架构（主服务器负责写，从服务器负责读）。 2.哨兵架构（哨兵服务器负责监控主服务器的状态，主服务器如果宕机，将从服务器提升为主）。  &nbsp; 3.集群架构（并发能" />
         <link rel="icon" href="/assets/website/img/vlessnode/favicon.ico" type="image/x-icon"/>
 
     <meta name="author" content="推荐VPN 订阅链接节点官网">
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://tuijianvpn.github.io/news/article-61661.htm" />
+    <meta property="og:url" content="https://tuijianvpn.github.io/news/article-62270.htm" />
     <meta property="og:site_name" content="推荐VPN 订阅链接节点官网" />
-    <meta property="og:title" content="mysql中如何存储日期数据" />
-    <meta property="og:image" content="https://tuijianvpn.github.io/uploads/20240826/4867ec00f515a2200ef3234723a06ba1.webp" />
-        <meta property="og:release_date" content="2025-02-23T09:47:08" />
-    <meta property="og:updated_time" content="2025-02-23T09:47:08" />
-        <meta property="og:description" content="一.DateTime类型 1,特点 1)以YYYY-MM-DD HH:MM:SS[.fraction]格式存储日期时间,在mysql5.6前可以只能存储到秒,在5.6后能存储到微秒 2)datetim" />
+    <meta property="og:title" content="解决Redis并发带来的雪崩，击穿和穿透问题，以及搭建一个Redis伪集群" />
+    <meta property="og:image" content="https://tuijianvpn.github.io/uploads/20240826/e63640c1d7e1c961b43f79af6ae68aab.webp" />
+        <meta property="og:release_date" content="2025-02-24T09:16:58" />
+    <meta property="og:updated_time" content="2025-02-24T09:16:58" />
+        <meta property="og:description" content="Redis集群的分类： 1.主从架构（主服务器负责写，从服务器负责读）。 2.哨兵架构（哨兵服务器负责监控主服务器的状态，主服务器如果宕机，将从服务器提升为主）。  &nbsp; 3.集群架构（并发能" />
         
     <meta name="applicable-device" content="pc,mobile" />
     <meta name="renderer" content="webkit" />
@@ -27,7 +27,7 @@
     <meta name="robots" content="max-image-preview:large" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="mysql中如何存储日期数据">
+    <meta name="apple-mobile-web-app-title" content="解决Redis并发带来的雪崩，击穿和穿透问题，以及搭建一个Redis伪集群">
     <meta name="format-detection" content="telephone=no">
 
     <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
@@ -136,7 +136,7 @@
                             <h5>正文</h5>
                         </span>
                     </div>
-                    <h1 class=" lh-1 mb-3">mysql中如何存储日期数据</h1>
+                    <h1 class=" lh-1 mb-3">解决Redis并发带来的雪崩，击穿和穿透问题，以及搭建一个Redis伪集群</h1>
                 </div>
             </div>
         </div>
@@ -147,10 +147,10 @@
             <div class="row">
                 <div class="col-md-9">
                                     <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
-                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2><a id="DateTime_0" rel="nofollow"></a>一.DateTime类型</h2> <p>1,特点<br /> 1)以YYYY-MM-DD HH:MM:SS[.fraction]格式存储日期时间,在mysql5.6前可以只能存储到秒,在5.6后能存储到微秒<br /> 2)datetime类型与时区无关,占用8个字节的存储空间<br /> 3)时间范围公元1000-01-01 00:00:00到9999-12-31 23:59:59,存储的时间范围非常广</p> <h2><a id="timestamp_7" rel="nofollow"></a>二.timestamp类型</h2> <h3><a id="1_9" rel="nofollow"></a>1.特点:</h3> <p>1)存储了由格林尼治时间1970年1月1日到当前时间的秒数,即时间戳, 以YYYY-MM-DD HH:MM:SS.[.fraction]的格式显示,占用4个字节,实际上是以int类型来存储的<br /> 2)时间范围1970-01-01到2038-01-19<br /> 3)timestamp类型显示依赖于所指定的时区<br /> 4)在行的数据修改时可以自动修改timestamp列的值 ,这个功能非常的有用,在本行的任何数据被修改时,都会自动修改这个时间,经常使用这个功能来标识每行最后被修改的时间,需要注意的是,如果一张表中有两个列是timestamp,那默认情况下只有第一列会自动更新,其他列不会</p> <h2><a id="_16" rel="nofollow"></a>三.演示</h2> <h3><a id="1_18" rel="nofollow"></a>1.关于时区的区别</h3> <p>1)首先在一张表中,存储两个列的值,第一列是datetime类型,第二列是timestamp类型,用相同时区存进去<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/b68371037a5d1641a147bf3cc8a27ec4.jpg" alt="mysql中如何存储日期数据"><br /> 2)修改当前数据库的时区,再次查询</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/97ed52f29c806eeed1ce173d9cd301f0.jpg" alt="mysql中如何存储日期数据"><br /> 3)结论:第一列的时间没有随着时区的变化而变化,第二列就变了,说明datetime与时区无关,timestamp会随着时区的变化而变化</p> <h2><a id="date_27" rel="nofollow"></a>四.date类型</h2> <h3><a id="1_29" rel="nofollow"></a>1.特点</h3> <p>1)只能存储日期,不能存储时间<br /> 2)占用的字节数比使用字符串(8个字节),datetime(8个字节),int(4个字节) 存储要少,使用date类型只需要3个字节<br /> 3)使用date类型还可以利用日期时间函数进行日期之间的计算<br /> 4)存储的时间范围:公元1000-01-01到9999-12-31之间的日期</p> <h2><a id="time_36" rel="nofollow"></a>五.time类型</h2> <p>用于存储时间的数据,格式为HH:MM:SS</p> <h2><a id="_40" rel="nofollow"></a>六.注意事项</h2> <h3><a id="1_42" rel="nofollow"></a>1.不要使用字符串类型来存储日期时间的数据</h3> <p>理由:<br /> 1)日期时间类型通常比字符串占用的存储空间小<br /> 2)日期时间类型在进行查找过滤时可以利用日期来进行对比<br /> 3)日期时间类型还有着丰富的处理函数,可以方便的对日期类型进行日期的计算</p> <h3><a id="2inttimestamp_49" rel="nofollow"></a>2.使用int存储日期时间不如使用timestamp类型,使用时更加方便,无需转换</h3> </div> 			                <div class="clearfix"></div>
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p><img fetchpriority="high" decoding="async" alt="" height="560" src="http://img.555519.xyz/uploads/20221230/97ef5ad431181b8be7a27969cf0878e1.jpg"></p> </h1> <p>Redis集群的分类：</p> <p>1.主从架构（主服务器负责写，从服务器负责读）。</p> <p>2.哨兵架构（哨兵服务器负责监控主服务器的状态，主服务器如果宕机，将从服务器提升为主）。</p> <p><img decoding="async" alt="" height="509" src="http://img.555519.xyz/uploads/20221230/adb215df9b7b9334a5310adec5413f9a.jpg"></p> <p>&nbsp;</p> <p>3.集群架构（并发能力，可用性高于哨兵架构），</p> <p>一个redis集群包含16384个插槽（hash slot），数据库中的每个键都属于这16384个插槽的其中一个。</p> <p>集群使用公式：将数据的key进行hash运算，获得保存数据的位置，该位置可能是集群中任意一台服务器。</p> <p><img decoding="async" alt="" height="543" src="http://img.555519.xyz/uploads/20221230/c5e88a9c24ddb40500736b4f499c2684.jpg"></p> <h2>&nbsp;搭建Redis伪集群的步骤</h2> <p>真正的集群：每个Redis安装到不同服务器上。</p> <p>伪集群：在一台机器上安装多个Redis实例。</p> <p>至少需要多少服务器：</p> <p>master的选举需要半数以上服务器投票支持，最少需要三台服务器，每台服务器需要有一个备份，最少需要六台服务器。</p> <pre><code class="language-html">1）新建redis-cluster目录,新建redis01~redis06六个子目录 cd /usr/local mkdir redis-cluster cd redis-cluster mkdir redis01  .... 2）复制redis/src和redis.conf到redis01~redis06目录中 cd redis cp -r src/* /usr/local/redis-cluster/redis01 cp reids.conf /usr/local/redis-cluster/redis01 .... 3）修改redis.conf daemonize yes cluster-enabled yes port 7001~~~~7006  4）在redis-cluster中创建启动脚本vi start.sh cd redis01 ./redis-server redis.conf cd .. cd redis02 ./redis-server redis.conf cd .. cd redis03 ./redis-server redis.conf cd .. cd redis04 ./redis-server redis.conf cd .. cd redis05 ./redis-server redis.conf cd .. cd redis06 ./redis-server redis.conf cd .. 5）启动redis实例 chmod +x start.sh ./start.sh 6）创建集群 /usr/local/redis/src/redis-cli --cluster create 192.168.52.3:7001 192.168.52.3:7002 192.168.52.3:7003 192.168.52.3:7004 192.168.52.3:7005 192.168.52.3:7006 --cluster-replicas 1 7）访问集群 /usr/local/redis/src/redis-cli -h 192.168.223.223 -c -p 7001</code></pre> </h1> <p>布隆过滤器（Bloom Filter）是1970年由布隆提出的。它实际上是一个很长的二进制向量和一系列随机映射函数。布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都比一般的算法要好的多，缺点是有一定的误识别率和删除困难。</p> <p>特点：判断存在的数据不一定存在，判断不存在的数据一定不存在。</p> <p>&nbsp;</p> <p><img loading="lazy" decoding="async" alt="" height="618" src="http://img.555519.xyz/uploads/20221230/5481133c5d06dedddbfc10f4c7e0bc31.jpg"></p> <p>&nbsp;</p> <p>Redis本身就支持布隆过滤器的实现</p> <p>Redission工具库，提供了基于Redis实现分布式工具，如：分布式锁、布隆过滤器、分布式原子类等。</p> <p>添加依赖：</p> <pre><code class="language-java">        &lt;dependency&gt;             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;             &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;         &lt;/dependency&gt;          &lt;!-- https://mvnrepository.com/artifact/org.redisson/redisson-spring-boot-starter --&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.redisson&lt;/groupId&gt;             &lt;artifactId&gt;redisson-spring-boot-starter&lt;/artifactId&gt;             &lt;version&gt;3.17.0&lt;/version&gt;         &lt;/dependency&gt;</code></pre> <p>配置类</p> <pre><code class="language-java">@Configuration public class RedissonConfig {      @Bean     public RedissonClient redissonClient(){         Config config = new Config();         config.setTransportMode(TransportMode.NIO);         SingleServerConfig singleServerConfig = config.useSingleServer();         //可以用"rediss://"来启用SSL连接         singleServerConfig.setAddress("redis://127.0.0.1:6379"); //        singleServerConfig.setPassword("123456");         RedissonClient redisson = Redisson.create(config);          return redisson;     } }</code></pre> <p>测试类</p> <pre><code class="language-java">@SpringBootTest class RedisdemoApplicationTests {      @Autowired     private RedissonClient client;      @Test     void contextLoads() {         //创建布隆过滤器         RBloomFilter&lt;String&gt; bloom = client.getBloomFilter("bloom-filter");         //初始化，参数1 序列长度  识别误差率         bloom.tryInit(10000000L,0.03);         //添加数据到过滤器         bloom.add("hello");         bloom.add("world");         bloom.add("app");         //判断过滤器中是否存在该值         System.out.println(bloom.contains("hello"));         System.out.println(bloom.contains("world"));         System.out.println(bloom.contains("java"));     }  }</code></pre> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/news/article-61660.htm">一个完整的pytorch预训练实现图像分类，模型融合</a></p>
-                                        <p>下一个：<a href="/news/article-62270.htm">解决Redis并发带来的雪崩，击穿和穿透问题，以及搭建一个Redis伪集群</a></p>
+                                        <p>上一个：<a href="/news/article-61661.htm">mysql中如何存储日期数据</a></p>
+                                        <p>下一个：<a href="/news/article-62271.htm">分布式一致性协议之Paxos算法</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -160,16 +160,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-54304.htm" title="动物医院诊疗许可证需要提供什么资料和手续 动物医院诊疗许可证需要提供什么资料和手续呢">动物医院诊疗许可证需要提供什么资料和手续 动物医院诊疗许可证需要提供什么资料和手续呢</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-11-free-node-subscribe.htm" title="VPN机场 | 2月11日22.8M/S|免费VPN/Shadowrocket/Clash/V2ray/SSR免费节点链接地址">VPN机场 | 2月11日22.8M/S|免费VPN/Shadowrocket/Clash/V2ray/SSR免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-21-free-node-subscribe-links.htm" title="推荐VPN | 2月21日19.3M/S|免费VPN/SSR/V2ray/Clash/Shadowrocket免费节点链接地址">推荐VPN | 2月21日19.3M/S|免费VPN/SSR/V2ray/Clash/Shadowrocket免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-62271.htm" title="分布式一致性协议之Paxos算法">分布式一致性协议之Paxos算法</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-18-free-subscribe-node.htm" title="推荐VPN | 2月18日22.2M/S|免费VPN/Shadowrocket/SSR/V2ray/Clash免费节点链接地址">推荐VPN | 2月18日22.2M/S|免费VPN/Shadowrocket/SSR/V2ray/Clash免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-13-free-node-subscribe.htm" title="推荐VPN | 2月13日22M/S|免费VPN/SSR/Shadowrocket/Clash/V2ray免费节点链接地址">推荐VPN | 2月13日22M/S|免费VPN/SSR/Shadowrocket/Clash/V2ray免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-55959.htm" title="动物医院属于什么性质（动物医院归哪里管）">动物医院属于什么性质（动物医院归哪里管）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-23-clash-v2ray-ss-ssr.htm" title="推荐VPN | 2月23日19.4M/S|免费VPN/Clash/SSR/Shadowrocket/V2ray免费节点链接地址">推荐VPN | 2月23日19.4M/S|免费VPN/Clash/SSR/Shadowrocket/V2ray免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-61066.htm" title="学宠物医生报考哪个学校专科（学宠物医生报考哪个学校专科比较好）">学宠物医生报考哪个学校专科（学宠物医生报考哪个学校专科比较好）</a></li>
-                        <li class="py-2"><a href="/news/article-58204.htm" title="宠物店一般卖几个月的狗比较好（宠物店一般卖多大的狗）">宠物店一般卖几个月的狗比较好（宠物店一般卖多大的狗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-24-node-share.htm" title="推荐VPN | 2月24日21.5M/S|免费VPN/Shadowrocket/Clash/V2ray/SSR免费节点链接地址">推荐VPN | 2月24日21.5M/S|免费VPN/Shadowrocket/Clash/V2ray/SSR免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-59348.htm" title="Java修饰符abstract与static及final的精华总结_java">Java修饰符abstract与static及final的精华总结_java</a></li>
+                        <li class="py-2"><a href="/news/article-56510.htm" title="国内宠物粮品牌上市公司有哪些（国内宠物粮品牌上市公司有哪些名字）">国内宠物粮品牌上市公司有哪些（国内宠物粮品牌上市公司有哪些名字）</a></li>
+                        <li class="py-2"><a href="/news/article-58840.htm" title="国考公务员报名入口官网（2024年公务员岗位招录表）">国考公务员报名入口官网（2024年公务员岗位招录表）</a></li>
+                        <li class="py-2"><a href="/news/article-57631.htm" title="【JavaScript】 &#8211; 滚动固定导航栏">【JavaScript】 &#8211; 滚动固定导航栏</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-17-free-v2ray-subscribe.htm" title="推荐VPN | 2月17日23M/S|免费VPN/V2ray/SSR/Clash/Shadowrocket免费节点链接地址">推荐VPN | 2月17日23M/S|免费VPN/V2ray/SSR/Clash/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-61660.htm" title="一个完整的pytorch预训练实现图像分类，模型融合">一个完整的pytorch预训练实现图像分类，模型融合</a></li>
+                        <li class="py-2"><a href="/news/article-53913.htm" title="SpringSecurity核心功能详解">SpringSecurity核心功能详解</a></li>
+                        <li class="py-2"><a href="/news/article-57070.htm" title="动物医院单词 动物医院单词怎么写">动物医院单词 动物医院单词怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-58203.htm" title="python虚拟环境virtualenv">python虚拟环境virtualenv</a></li>
                     </ul>
     </div>
 </div>

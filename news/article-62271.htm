@@ -2,23 +2,23 @@
 <html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://tuijianvpn.github.io/news/article-61065.htm" />
+        <link rel="canonical" href="https://tuijianvpn.github.io/news/article-62271.htm" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redis学习笔记 无锁的原子操作：Redis如何应对并发访问</title>
-        <meta name="description" content="为了保证并发访问的正确性，Redis 提供了两种方法，分别是加锁和原子操作。 但是加锁会遇到两个问题：  首先是加锁操作过多会降低系统的并发访问性能 其次，Redis客户端要加锁时，需要使用分布式锁，" />
+    <title>分布式一致性协议之Paxos算法</title>
+        <meta name="description" content="目录 前置知识 问题描述 提案的选定 推导过程 Proposer生成提案 Accpetor批准提案 算法流程  之前文章介绍了2PC和3PC一致性协议，本文将继续介绍另一个Paxos算法  对于分布式" />
         <link rel="icon" href="/assets/website/img/vlessnode/favicon.ico" type="image/x-icon"/>
 
     <meta name="author" content="推荐VPN 订阅链接节点官网">
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://tuijianvpn.github.io/news/article-61065.htm" />
+    <meta property="og:url" content="https://tuijianvpn.github.io/news/article-62271.htm" />
     <meta property="og:site_name" content="推荐VPN 订阅链接节点官网" />
-    <meta property="og:title" content="Redis学习笔记 无锁的原子操作：Redis如何应对并发访问" />
-    <meta property="og:image" content="https://tuijianvpn.github.io/uploads/20240826/769caa3e67026e08508cd6b88870e560.webp" />
-        <meta property="og:release_date" content="2025-02-22T07:12:01" />
-    <meta property="og:updated_time" content="2025-02-22T07:12:01" />
-        <meta property="og:description" content="为了保证并发访问的正确性，Redis 提供了两种方法，分别是加锁和原子操作。 但是加锁会遇到两个问题：  首先是加锁操作过多会降低系统的并发访问性能 其次，Redis客户端要加锁时，需要使用分布式锁，" />
+    <meta property="og:title" content="分布式一致性协议之Paxos算法" />
+    <meta property="og:image" content="https://tuijianvpn.github.io/uploads/20240826/27d208690eaeb5d28d8b0cee121277cb.webp" />
+        <meta property="og:release_date" content="2025-02-24T09:16:58" />
+    <meta property="og:updated_time" content="2025-02-24T09:16:58" />
+        <meta property="og:description" content="目录 前置知识 问题描述 提案的选定 推导过程 Proposer生成提案 Accpetor批准提案 算法流程  之前文章介绍了2PC和3PC一致性协议，本文将继续介绍另一个Paxos算法  对于分布式" />
         
     <meta name="applicable-device" content="pc,mobile" />
     <meta name="renderer" content="webkit" />
@@ -27,7 +27,7 @@
     <meta name="robots" content="max-image-preview:large" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Redis学习笔记 无锁的原子操作：Redis如何应对并发访问">
+    <meta name="apple-mobile-web-app-title" content="分布式一致性协议之Paxos算法">
     <meta name="format-detection" content="telephone=no">
 
     <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
@@ -136,7 +136,7 @@
                             <h5>正文</h5>
                         </span>
                     </div>
-                    <h1 class=" lh-1 mb-3">Redis学习笔记 无锁的原子操作：Redis如何应对并发访问</h1>
+                    <h1 class=" lh-1 mb-3">分布式一致性协议之Paxos算法</h1>
                 </div>
             </div>
         </div>
@@ -147,10 +147,9 @@
             <div class="row">
                 <div class="col-md-9">
                                     <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
-                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>为了保证并发访问的正确性，Redis 提供了两种方法，分别是加锁和原子操作。</p> <p>但是加锁会遇到两个问题：</p> <ul> <li>首先是加锁操作过多会降低系统的并发访问性能</li> <li>其次，Redis客户端要加锁时，需要使用分布式锁，而分布式锁实现复杂</li> </ul> <p><strong>原子操作是另一种提供并发访问控制的方法</strong>，实现了无锁操作。既可以保证并发控制，还能减少系统对并发性能的影响。</p> <p><strong>并发访问中需要对什么进行控制？</strong></p> <p>当客户端需要修改数据时，基本流程分成两步：</p> <ol> <li>客户端先把数据读取到本地，在本地进行修改；</li> <li>客户端修改完数据后，再写回 Redis。</li> </ol> <p>即为“读取 - 修改 - 写回”操作，也称为RMW操作。当有多个客户端对同一份数据执行 RMW 操作的话，我们就需要让 RMW 操作涉及的代码以原子性方式执行。访问同一份数据的 RMW 操作代码，就叫做临界区代码。</p> </h1> <p>为了实现并发控制要求的临界区代码互斥执行，Redis 的原子操作采用了两种方法：</p> <ul> <li>把多个操作在 Redis 中实现成一个操作，也就是<strong>单命令操作</strong>；</li> <li>把多个操作写到一个 Lua 脚本中，以原子性方式执行单个 <strong>Lua 脚本</strong>。</li> </ul> <h2> <a id="_23" rel="nofollow"></a>单命令操作</h2> <p>Redis 提供了<code>INCR</code>/<code>DECR</code>命令，把RMW这三个操作转变为一个原子操作了。</p> <p>INCR/DECR 命令可以对数据进行<strong>增值 / 减值</strong>操作，而且它们本身就是单个命令操作，Redis 在执行它们时，本身就具有互斥性。</p> <p>比如，下面的伪代码显示了使用锁来控制临界区代码，对库存值做了一次扣减</p> <pre><code>LOCK() current = GET(id) current-- SET(id, current) UNLOCK() </code></pre> <p>而使用单命令操作则如下：</p> <pre><code>DECR id </code></pre> <p>所以，如果我们执行的 RMW 操作是对数据进行增减值的话，Redis 提供的原子操作 INCR 和 DECR 可以直接帮助我们进行并发控制。</p> <h2> <a id="Lua_42" rel="nofollow"></a>Lua脚本</h2> <p>如果我们要执行的操作不是简单地增减数据，而是有更加复杂的判断逻辑或者是其他操作，那么，Redis 的单命令操作已经无法保证多个操作的互斥执行了。所以，这个时候，我们需要使用第二个方法，也就是 Lua 脚本。</p> <p>Redis 会把整个 Lua 脚本作为一个整体执行，在执行的过程中不会被其他命令打断，从而保证了 Lua 脚本中操作的原子性。</p> <p>比如，我们有时需要限制某个客户端在一定时间范围内的访问次数，在一分钟内只能访问一次。所以，这个例子中的操作无法用 Redis 单个命令来实现，此时，我们就可以使用 Lua 脚本来保证并发控制。我们可以把访问次数加 1、判断访问次数是否为 1，以及设置过期时间这三个操作写入一个 Lua 脚本，如下所示：</p> <pre><code>local current current = redis.call("incr",KEYS[1]) if tonumber(current) == 1 then     redis.call("expire",KEYS[1],60) end </code></pre> <p>假设我们编写的脚本名称为 lua.script，我们接着就可以使用 Redis 客户端，带上 eval 选项，来执行该脚本。脚本所需的参数将通过以下命令中的 keys 和 args 进行传递。</p> <pre><code>redis-cli  --eval lua.script  keys , args </code></pre> <p>这样一来，访问次数加 1、判断访问次数是否为 1，以及设置过期时间这三个操作就可以原子性地执行了。即使客户端有多个线程同时执行这个脚本，Redis 也会依次串行执行脚本代码，避免了并发操作带来的数据错误。</p> <p>Redis 的 Lua 脚本可以包含多个操作，这些操作都会以原子性的方式执行，绕开了单命令操作的限制。不过，如果把很多操作都放在 Lua 脚本中原子执行，会导致 Redis 执行脚本的时间增加，同样也会降低 Redis 的并发性能。所以，<strong>在编写 Lua 脚本时，你要避免把不需要做并发控制的操作写入脚本中</strong>。</p> </p></div> 			                <div class="clearfix"></div>
+                  				  				  				<div id="content_views" class="htmledit_views"> <p id="main-toc"><strong>目录</strong></p> <p id="%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86-toc" style="margin-left:0px;"><a href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86" title="前置知识" rel="nofollow">前置知识</a></p> <p id="%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-toc" style="margin-left:0px;"><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0" title="问题描述" rel="nofollow">问题描述</a></p> <p id="%E6%8F%90%E6%A1%88%E7%9A%84%E9%80%89%E5%AE%9A-toc" style="margin-left:40px;"><a href="#%E6%8F%90%E6%A1%88%E7%9A%84%E9%80%89%E5%AE%9A" title="提案的选定" rel="nofollow">提案的选定</a></p> <p id="%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B-toc" style="margin-left:80px;"><a href="#%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B" title="推导过程" rel="nofollow">推导过程</a></p> <p id="Proposer%E7%94%9F%E6%88%90%E6%8F%90%E6%A1%88-toc" style="margin-left:40px;"><a href="#Proposer%E7%94%9F%E6%88%90%E6%8F%90%E6%A1%88" title="Proposer生成提案" rel="nofollow">Proposer生成提案</a></p> <p id="Accpetor%E6%89%B9%E5%87%86%E6%8F%90%E6%A1%88-toc" style="margin-left:40px;"><a href="#Accpetor%E6%89%B9%E5%87%86%E6%8F%90%E6%A1%88" title="Accpetor批准提案" rel="nofollow">Accpetor批准提案</a></p> <p id="%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B-toc" style="margin-left:40px;"><a href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B" title="算法流程" rel="nofollow">算法流程</a></p> <hr id="hr-toc"/> <p>之前文章介绍了2PC和3PC一致性协议，本文将继续介绍另一个Paxos算法</p> </h1> <p>对于分布式一致性算法，有两个最重要的属性：</p> <ol> <li>安全性：指那些需要保证永远都不会发生的事情</li> <li>活性：指那些最终一定会发生的事情</li> </ol> </h1> <p>假设有一组可以提出提案的进程集合，对于一致性算法，要求：</p> <ol> <li>这些提案最终只有一个被选定</li> <li>当一个提案被选定后，进程可以获取被选定的提案信息</li> </ol> <p>对于Paxos，安全性要求有：</p> <ol> <li>只有被提出提案才能被选定</li> <li>只有一个值会被选定</li> <li>如果某个进程认为某个提案被选定了，那这个提案必须真的是被选定的那个</li> </ol> <p>活性要求是：保证最终有一个提案被选定</p> <p>三种参与角色：</p> <p>Proposer：提案提出者</p> <p>Acceptor：提案接受批准者</p> <p>Learner：只获取最终被批准的提案</p> <h2 id="%E6%8F%90%E6%A1%88%E7%9A%84%E9%80%89%E5%AE%9A">提案的选定</h2> <p><span style="color:#fe2c24;"><strong>规则：</strong></span>Proposer向一个Acceptor集合发送提案，集合中的每个Acceptor都可能会accept（批准）该提案，当有<strong>足够多</strong>的Acceptor批准该提案的时候，就可以认为这个提案被选定了。</p> <p>这里的足够多怎么界定呢？</p> <p>这个“足够多”的集合是所有Acceptor的一个子集，这个可以包含Acceptor集合中的大多数成员，因为任意两个包含大多数Acceptor的子集至少有一个公共成员。（实际就是超过一半的Acceptor批准）</p> <h3 id="%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B">推导过程</h3> <p>在没有失败和消息丢失的情况下，如果我们希望即使在只有一个提案被提出的情况下，仍然可以选定一个提案，这就暗示如下需求：</p> <p><strong>P1:一个Acceptor必须批准它收到的第一个提案</strong></p> <p>但这个条件存在问题，即多个提案被不同Proposer同时提出，无法最终确定一个提案</p> <p><img fetchpriority="high" decoding="async" alt="" height="195" src="http://img.555519.xyz/uploads3/20220823/19d258a5190646c00a1d70f7d64b38d9.jpg"></p> <p>还会出现不同提案被选定的Acceptor集合数量相同，也无法最终确定一个提案<img decoding="async" alt="" height="183" src="http://img.555519.xyz/uploads3/20220823/d00ee2b886e13f47b71498def5c78c16.jpg"></p> <p>因此，需要在P1的基础上，在加“一个Acceptor必须能够批准不止一个提案”的条件。</p> <p>这里将每个提案抽象成一个“【编号，Value】”的结构</p> <ul> <li>编号是全局唯一的，可以唯一标识一个被Acceptor批准的提案</li> <li>当具有某个Value值的提案被一半以上的Acceptor批准后，我们就认为这个提案被选定了</li> </ul> <p>&nbsp;我们约定：虽然允许多个提案被选定，但是必须保证被选定的提案都具有相同的Value值，即</p> <p><strong>P2:如果【M0，V0】的提案被选定了，那么所有编号比M0高的且被选定的提案，Value值都是V0</strong></p> <p>这里对于P2的证明需要用到数学归纳法，这里不做详述</p> <h2 id="Proposer%E7%94%9F%E6%88%90%E6%8F%90%E6%A1%88">Proposer生成提案</h2> <p>由于P2条件，Proposer在产生一个编号为Mn的提案时，必须知道当前某一个将要或者已经被半数以上的Acceptor批准的编号小于Mn但最大的提案。并且&nbsp;Proposer会要求所有的Acceptor都不能再批准任何编号小于Mn的提案。</p> <p><strong>Prepare请求</strong></p> <p>Proposer选择一个新的提案编号Mn，然后向某个Acceptor集合发送请求，要求其作出如下响应：</p> <ol> <li>承诺不在接受任何编号小于Mn的提案</li> <li>如果此Acceptor批准过提案，就返回已经批准的编号小于Mn但最大的提案的Value值</li> </ol> <p><strong>Accept请求</strong></p> <p>如果Proposer收到一半以上Acceptor的响应结果，那么它就可以产生【Mn，Vn】的提案，这里的Vn是所有响应中编号最大提案的Vaule值，如果大多数Acceptor没有批准过提案，则Vn任意。之后将该提案再次发送给某个Acceptor集合，期望获得批准。</p> <h2 id="Accpetor%E6%89%B9%E5%87%86%E6%8F%90%E6%A1%88">Accpetor批准提案</h2> <p><strong>收到Prepare请求</strong></p> <p>Acceptor可以在任何时候响应一个prepare请求</p> <p><strong>收到Accept请求</strong></p> <p>在不违背承诺的前提下，可以任意响应Accept请求</p> <p>即一个Acceptor只要未响应过任何编号大于Mn的Prepare请求，则它可以接受这个编号为Mn的提案</p> <h2 id="%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B">算法流程</h2> <p>阶段一<br /> 1. Proposer选择一个提案编号Mn，然后向超过半数的Acceptor子集发送编号为Mn的Prepare请求。<br /> 2.如果一个Acceptor收到一个编号为Mn的Prepare请求，且编号Mn大于该Acceptor已经响应的所有Prepare请求的编号，那么它就会将它已经批准过的最大编号的提案作为响应反馈给Proposer，同时该Acceptor会承诺不会再批准任何编号小于Mn的提案。</p> <p>阶段二</p> <p>1.如果Proposer收到来自半数以上的Acceptor对于其发出的编号为Mn的Prepare请求的响应，那么它就会发送一个【Mn，Vn】提案的Accept请求给Acceptor。Vn的值就是收到的响应中编号最大的提案的值，如果响应中不包含任何提案，那么它就是任意值。<br /> 2.如果Acceptor收到这个针对【Mn，Vn】提案的Accept请求，只要该Acceptor尚未对编号大于Mn的Prepare请求做出响应，它就可以通过这个提案。</p> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/news/article-60496.htm">动物经营类游戏推荐（动物经营类游戏推荐）</a></p>
-                                        <p>下一个：<a href="/news/article-61066.htm">学宠物医生报考哪个学校专科（学宠物医生报考哪个学校专科比较好）</a></p>
+                                        <p>上一个：<a href="/news/article-62270.htm">解决Redis并发带来的雪崩，击穿和穿透问题，以及搭建一个Redis伪集群</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -160,16 +159,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-2-20-free-node-subscribe.htm" title="推荐VPN | 2月20日21.8M/S|免费VPN/V2ray/Clash/SSR/Shadowrocket免费节点链接地址">推荐VPN | 2月20日21.8M/S|免费VPN/V2ray/Clash/SSR/Shadowrocket免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-59348.htm" title="Java修饰符abstract与static及final的精华总结_java">Java修饰符abstract与static及final的精华总结_java</a></li>
-                        <li class="py-2"><a href="/news/article-56510.htm" title="国内宠物粮品牌上市公司有哪些（国内宠物粮品牌上市公司有哪些名字）">国内宠物粮品牌上市公司有哪些（国内宠物粮品牌上市公司有哪些名字）</a></li>
-                        <li class="py-2"><a href="/news/article-60496.htm" title="动物经营类游戏推荐（动物经营类游戏推荐）">动物经营类游戏推荐（动物经营类游戏推荐）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-10-node-share.htm" title="VPN机场 | 2月10日19.5M/S|免费VPN/SSR/Shadowrocket/Clash/V2ray免费节点链接地址">VPN机场 | 2月10日19.5M/S|免费VPN/SSR/Shadowrocket/Clash/V2ray免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-55404.htm" title="北京动物观赏医院电话号码（北京观赏宠物医院电话）">北京动物观赏医院电话号码（北京观赏宠物医院电话）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-11-free-node-subscribe.htm" title="VPN机场 | 2月11日22.8M/S|免费VPN/Shadowrocket/Clash/V2ray/SSR免费节点链接地址">VPN机场 | 2月11日22.8M/S|免费VPN/Shadowrocket/Clash/V2ray/SSR免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-59923.htm" title="2021年国考人数统计汇总（2021年国考人数统计汇总图）">2021年国考人数统计汇总（2021年国考人数统计汇总图）</a></li>
+                        <li class="py-2"><a href="/news/article-61660.htm" title="一个完整的pytorch预训练实现图像分类，模型融合">一个完整的pytorch预训练实现图像分类，模型融合</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-2-12-free-node-subscribe-links.htm" title="VPN机场 | 2月12日18.7M/S|免费VPN/Shadowrocket/Clash/SSR/V2ray免费节点链接地址">VPN机场 | 2月12日18.7M/S|免费VPN/Shadowrocket/Clash/SSR/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-58840.htm" title="国考公务员报名入口官网（2024年公务员岗位招录表）">国考公务员报名入口官网（2024年公务员岗位招录表）</a></li>
                         <li class="py-2"><a href="/news/article-59349.htm" title="要开一家宠物医院需要到哪些部门办理哪些证件方可开业（开宠物医院的基本要求）">要开一家宠物医院需要到哪些部门办理哪些证件方可开业（开宠物医院的基本要求）</a></li>
+                        <li class="py-2"><a href="/news/article-57631.htm" title="【JavaScript】 &#8211; 滚动固定导航栏">【JavaScript】 &#8211; 滚动固定导航栏</a></li>
+                        <li class="py-2"><a href="/news/article-60496.htm" title="动物经营类游戏推荐（动物经营类游戏推荐）">动物经营类游戏推荐（动物经营类游戏推荐）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-14-free-v2ray.htm" title="推荐VPN | 2月14日22.3M/S|免费VPN/Clash/SSR/Shadowrocket/V2ray免费节点链接地址">推荐VPN | 2月14日22.3M/S|免费VPN/Clash/SSR/Shadowrocket/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-58839.htm" title="pytorch: 计算ConvTranspose1d输出特征大小">pytorch: 计算ConvTranspose1d输出特征大小</a></li>
+                        <li class="py-2"><a href="/news/article-59348.htm" title="Java修饰符abstract与static及final的精华总结_java">Java修饰符abstract与static及final的精华总结_java</a></li>
+                        <li class="py-2"><a href="/news/article-57632.htm" title="猫的疫苗可以自己打吗?（猫的疫苗可以自己打吗安全吗）">猫的疫苗可以自己打吗?（猫的疫苗可以自己打吗安全吗）</a></li>
                     </ul>
     </div>
 </div>
