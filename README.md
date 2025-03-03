@@ -1,4 +1,4 @@
-# 推荐VPN | 3月2日19.8M/S|免费VPN/Shadowrocket/V2ray/SSR/Clash免费节点链接地址  更新时间 2025-03-02 09:46:08
+# 推荐VPN | 3月3日21.1M/S|免费VPN/V2ray/Clash/Shadowrocket/SSR免费节点链接地址  更新时间 2025-03-03 08:22:44
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://tuijianvpn.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://tuijianvpn.github.io/uploads/2025/03/0-20250302.yaml
-- https://tuijianvpn.github.io/uploads/2025/03/1-20250302.yaml
-- https://tuijianvpn.github.io/uploads/2025/03/2-20250302.yaml
-- https://tuijianvpn.github.io/uploads/2025/03/3-20250302.yaml
-- https://tuijianvpn.github.io/uploads/2025/03/4-20250302.yaml
+- https://tuijianvpn.github.io/uploads/2025/03/0-20250303.yaml
+- https://tuijianvpn.github.io/uploads/2025/03/1-20250303.yaml
+- https://tuijianvpn.github.io/uploads/2025/03/2-20250303.yaml
+- https://tuijianvpn.github.io/uploads/2025/03/3-20250303.yaml
+- https://tuijianvpn.github.io/uploads/2025/03/4-20250303.yaml
 
 ### V2ray订阅链接
 
-- https://tuijianvpn.github.io/uploads/2025/03/0-20250302.txt
-- https://tuijianvpn.github.io/uploads/2025/03/1-20250302.txt
-- https://tuijianvpn.github.io/uploads/2025/03/2-20250302.txt
-- https://tuijianvpn.github.io/uploads/2025/03/3-20250302.txt
-- https://tuijianvpn.github.io/uploads/2025/03/4-20250302.txt
+- https://tuijianvpn.github.io/uploads/2025/03/0-20250303.txt
+- https://tuijianvpn.github.io/uploads/2025/03/1-20250303.txt
+- https://tuijianvpn.github.io/uploads/2025/03/2-20250303.txt
+- https://tuijianvpn.github.io/uploads/2025/03/3-20250303.txt
+- https://tuijianvpn.github.io/uploads/2025/03/4-20250303.txt
 
 ### Sing-box订阅链接
 
-- https://tuijianvpn.github.io/uploads/2025/03/20250302.json
+- https://tuijianvpn.github.io/uploads/2025/03/20250303.json
 
 ## 更多clash节点订阅 ：
 
