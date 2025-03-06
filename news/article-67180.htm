@@ -150,6 +150,7 @@
                   				  				  				<div id="content_views" class="htmledit_views"> <h3>maven下载</h3> <p>地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://maven.apache.org/download.cgi"  rel="nofollow">https://maven.apache.org/download.cgi</a></p> <p><img fetchpriority="high" decoding="async" alt="" height="1024" src="http://img.555519.xyz/uploads3/20220603/866879b2b22b773c3a37a11fe2a250df.jpg"></p> <h3><strong>安装Maven</strong></h3> <p>1 下载完是一个压缩包，解压即可，解压出来的文件如下图所示。</p> <p><img decoding="async" alt="" height="580" src="http://img.555519.xyz/uploads3/20220603/780bc7ebc12704a85eb9c037ea9ec351.jpg"></p> <p>2、把解压出来的文件拷贝到任意目录下面。（我这里将maven放在资源库文件夹下）</p> <p><img decoding="async" alt="" height="616" src="http://img.555519.xyz/uploads3/20220603/4cadf1dd08f4831382858f31a973f833.jpg"></p> <p>3&nbsp;配置环境变量</p> <p>打开环境变量配置文件</p> <pre><code>vi ~/.bash_profile</code></pre> <p>&nbsp;配置环境变量</p> <pre><code>export MAVEN_HOME=/Library/apache-maven-3.6.2 export PATH=${MAVEN_HOME}/bin:$PATH</code></pre> <p>保存，然后在终端让命令生效一下</p> <pre><code>source ~/.bash_profile</code></pre> <p>4、测试一下环境变量是否已经配置完成。在终端输入一个 mvn -v。如果出现下图则配置成功，如果没有的话，可以去检查一下 路径是否正确，或者版本号名称之类的。</p> <p><img loading="lazy" decoding="async" alt="" height="380" src="http://img.555519.xyz/uploads3/20220603/c6cfd5f653e9fab5b19985de064c7e67.jpg"></p> <p>5、创建本地仓库，在maven文件夹在创建&nbsp;repository 文件夹。</p> <p>6 &nbsp;修改conf下的settings.xml的本地仓库位置和创建maven阿里云镜像仓库配置</p> <pre><code class="language-XML">&lt;localRepository&gt;/Library/apache-maven-3.6.2/repository&lt;/localRepository&gt;    &lt;mirrors&gt;     &lt;mirror&gt;         &lt;id&gt;alimaven&lt;/id&gt;         &lt;name&gt;aliyun maven&lt;/name&gt;         &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;         &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;                &lt;/mirror&gt;    &lt;/mirrors&gt;</code></pre> <p>6 下载依赖</p> <pre><code>mvn help:system</code></pre> <p>下载成功后，你可以发现<strong>repository</strong>里面会有很多的文件 这些文件就是我们从中央仓库下载到本地仓库的文件</p> <h3><strong>配置IntelliJ IDEA</strong></h3> <p><img loading="lazy" decoding="async" alt="" height="1200" src="http://img.555519.xyz/uploads3/20220603/3c7324051a047e97681c4f5daba7637a.jpg"></p> <p>&nbsp;第一个是配置maven的路径</p> <p>&nbsp;第二个是maven配置文件的路径</p> <p>&nbsp;第三个是本地仓库的路径</p> <p></p> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-67179.htm">Android中EditText光标的显示与隐藏方法</a></p>
+                                        <p>下一个：<a href="/news/article-67803.htm">vue中如何实现发表提交后默认到最新的数据显示</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -159,16 +160,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-2-23-clash-v2ray-ss-ssr.htm" title="推荐VPN | 2月23日19.4M/S|免费VPN/Clash/SSR/Shadowrocket/V2ray免费节点链接地址">推荐VPN | 2月23日19.4M/S|免费VPN/Clash/SSR/Shadowrocket/V2ray免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-67179.htm" title="Android中EditText光标的显示与隐藏方法">Android中EditText光标的显示与隐藏方法</a></li>
-                        <li class="py-2"><a href="/news/article-55404.htm" title="北京动物观赏医院电话号码（北京观赏宠物医院电话）">北京动物观赏医院电话号码（北京观赏宠物医院电话）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-10-node-share.htm" title="VPN机场 | 2月10日19.5M/S|免费VPN/SSR/Shadowrocket/Clash/V2ray免费节点链接地址">VPN机场 | 2月10日19.5M/S|免费VPN/SSR/Shadowrocket/Clash/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-68437.htm" title="新手小白怎么开宠物店（开宠物店的利润和风险）">新手小白怎么开宠物店（开宠物店的利润和风险）</a></li>
+                        <li class="py-2"><a href="/news/article-62271.htm" title="分布式一致性协议之Paxos算法">分布式一致性协议之Paxos算法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-clash-v2ray-ss-ssr.htm" title="推荐VPN | 2月16日18.4M/S|免费VPN/V2ray/Clash/SSR/Shadowrocket免费节点链接地址">推荐VPN | 2月16日18.4M/S|免费VPN/V2ray/Clash/SSR/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-54852.htm" title="Pip 使用简易指南">Pip 使用简易指南</a></li>
+                        <li class="py-2"><a href="/news/article-54853.htm" title="动物疫苗销售好做吗现在 动物疫苗销售好做吗现在怎么样">动物疫苗销售好做吗现在 动物疫苗销售好做吗现在怎么样</a></li>
+                        <li class="py-2"><a href="/news/article-64684.htm" title="猫咪喜欢我吗（猫咪喜欢自己的主人吗）">猫咪喜欢我吗（猫咪喜欢自己的主人吗）</a></li>
+                        <li class="py-2"><a href="/news/article-57631.htm" title="【JavaScript】 &#8211; 滚动固定导航栏">【JavaScript】 &#8211; 滚动固定导航栏</a></li>
+                        <li class="py-2"><a href="/news/article-53913.htm" title="SpringSecurity核心功能详解">SpringSecurity核心功能详解</a></li>
                         <li class="py-2"><a href="/news/article-61066.htm" title="学宠物医生报考哪个学校专科（学宠物医生报考哪个学校专科比较好）">学宠物医生报考哪个学校专科（学宠物医生报考哪个学校专科比较好）</a></li>
-                        <li class="py-2"><a href="/news/article-53914.htm" title="合肥宠物狗领养中心地址（合肥有宠物领养中心吗）">合肥宠物狗领养中心地址（合肥有宠物领养中心吗）</a></li>
-                        <li class="py-2"><a href="/news/article-58203.htm" title="python虚拟环境virtualenv">python虚拟环境virtualenv</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-28-free-node-subscribe-links.htm" title="推荐VPN | 2月28日18.8M/S|免费VPN/V2ray/SSR/Clash/Shadowrocket免费节点链接地址">推荐VPN | 2月28日18.8M/S|免费VPN/V2ray/SSR/Clash/Shadowrocket免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-14-free-v2ray.htm" title="推荐VPN | 2月14日22.3M/S|免费VPN/Clash/SSR/Shadowrocket/V2ray免费节点链接地址">推荐VPN | 2月14日22.3M/S|免费VPN/Clash/SSR/Shadowrocket/V2ray免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-54303.htm" title="八公宠物收银系统好用吗（八公宠物收银系统好用吗安全吗）">八公宠物收银系统好用吗（八公宠物收银系统好用吗安全吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-12-free-node-subscribe-links.htm" title="VPN机场 | 2月12日18.7M/S|免费VPN/Shadowrocket/Clash/SSR/V2ray免费节点链接地址">VPN机场 | 2月12日18.7M/S|免费VPN/Shadowrocket/Clash/SSR/V2ray免费节点链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -180,7 +181,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
