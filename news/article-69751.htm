@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://tuijianvpn.github.io/news/article-69751.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirngboot实现Nacos作为配置中心_在线工具</title>
+        <meta name="description" content="一、Nacos（Nacos官方文档） Nacos是阿里旗下的一款开源软件，支持服务注册与发现、配置管理以及微服务管理的组件。Nacos的目标是为了取代过去常用的注册中心（Zookeeper、Eurek" />
+        <link rel="icon" href="/assets/website/img/vlessnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="推荐VPN 订阅链接节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://tuijianvpn.github.io/news/article-69751.htm" />
+    <meta property="og:site_name" content="推荐VPN 订阅链接节点官网" />
+    <meta property="og:title" content="Spirngboot实现Nacos作为配置中心_在线工具" />
+    <meta property="og:image" content="https://tuijianvpn.github.io/uploads/20240826/2c4a24270d62d274eb7498c3f4164853.webp" />
+        <meta property="og:release_date" content="2025-03-08T05:06:38" />
+    <meta property="og:updated_time" content="2025-03-08T05:06:38" />
+        <meta property="og:description" content="一、Nacos（Nacos官方文档） Nacos是阿里旗下的一款开源软件，支持服务注册与发现、配置管理以及微服务管理的组件。Nacos的目标是为了取代过去常用的注册中心（Zookeeper、Eurek" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spirngboot实现Nacos作为配置中心_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/vlessnode/vendor.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/vlessnode/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- script ================================================== -->
+    <script src="/assets/website/js/frontend/vlessnode/modernizr.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9HP78JKJK6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9HP78JKJK6');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Navigation Section Starts -->
+    <section id="navigation-bar" class="navigation position-fixed">
+        <nav id="navbar-example2" class="navbar navbar-expand-lg ">
+            <div class="navigation container-fluid d-flex flex-wrap align-items-center my-2 pe-4 ps-5 ">
+                <div class="col-md-3 brand-logo">
+                    <a href="/" class="d-inline-flex link-body-emphasis">
+                                        <span>推荐VPN</span>
+                                        </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Menu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav align-items-center flex-grow-1">
+                                                        <li class="nav-list mx-3">
+                                <a href="/" class="nav-link px-2">
+                                    <h5> 首页 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/free-nodes/" class="nav-link px-2">
+                                    <h5> 免费节点 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/paid-subscribe/" class="nav-link px-2">
+                                    <h5> 推荐机场 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/news/" class="nav-link px-2">
+                                    <h5> 新闻资讯 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/client.htm" class="nav-link px-2">
+                                    <h5> 客户端 </h5>
+                                </a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <!-- Hero Section Starts -->
+    <section id="hero">
+        <div id="resources" class="hero container py-5 my-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6">
+                </div>
+                <div class="col-lg-6">
+                    <div class="breadcrumb ">
+                        <span class="item">
+                            <a href="/">
+                                <h5> <u>首页</u> </h5>
+                            </a>
+                        </span>
+                        &nbsp;<h5>/</h5> &nbsp; 
+                        <span class="item">
+                            <a href="/news/">
+                                <h5> <u>新闻资讯</u> </h5>
+                            </a>
+                        </span>
+                        &nbsp;<h5>/</h5> &nbsp; 
+
+                        <span class="item">
+                            <h5>正文</h5>
+                        </span>
+                    </div>
+                    <h1 class=" lh-1 mb-3">Spirngboot实现Nacos作为配置中心_在线工具</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Feature Section Starts -->
+    <section id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<h2><span style='font-family: "comic sans ms", sans-serif'>一、Nacos（<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://nacos.io/zh-cn/docs/quick-start.html"  target="_blank"  rel="nofollow">Nacos官方文档</a>）</span></h2> <p><span style='font-family: "comic sans ms", sans-serif'>Nacos是阿里旗下的一款开源软件，支持服务注册与发现、配置管理以及微服务管理的组件。Nacos的目标是为了取代过去常用的注册中心（Zookeeper、Eureka等），以及配置中心（Spring Cloud Config等）。Nacos集成了注册中心和配置中心的功能。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>基于此，虽然是SpirngBoot项目，服务注册与发现用不上，但是可以使用Nacos配置中心的功能，对项目的配置文件进行动态管理。</span></p> <h2><span style='font-family: "comic sans ms", sans-serif'>二、nacos依赖</span></h2> <div class="cnblogs_code"> <pre><span style='font-family: "comic sans ms", sans-serif'>&lt;!-- nacos配置中心依赖 --&gt; &lt;dependency&gt;     &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;     &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-config&lt;/artifactId&gt; &lt;/dependency&gt;<span style="color: rgba(0, 0, 0, 1)">  springcloud相关依赖如下： </span>&lt;!-- spring-cloud-alibaba依赖库 --&gt; &lt;dependency&gt;    &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;    &lt;artifactId&gt;spring-cloud-alibaba-dependencies&lt;/artifactId&gt;    &lt;version&gt;${spring-cloud-alibaba.version}&lt;/version&gt;    &lt;type&gt;pom&lt;/type&gt;    &lt;scope&gt;<span style="color: rgba(0, 0, 255, 1)">import</span>&lt;/scope&gt; &lt;/dependency&gt;</span></pre> <pre><span style='font-family: "comic sans ms", sans-serif'>&lt;spring-cloud-alibaba.version&gt;2.2.6.RELEASE&lt;/spring-cloud-alibaba.version&gt;</span></pre> </div> <p><span style='font-family: "comic sans ms", sans-serif'>注意：springcloud-alibaba依赖版本需和nacos版本对应。（<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E"  target="_blank"  rel="nofollow">版本对应关系</a>）</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>附：</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>注册中心依赖如下：</span></p> <div class="cnblogs_code"> <pre><span style='font-family: "comic sans ms", sans-serif'>&lt;dependency&gt;     &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;     &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-discovery&lt;/artifactId&gt; &lt;/dependency&gt;</span></pre> </div> <p><span style='font-family: "comic sans ms", sans-serif'> 注意：查询资料时发现有如下问题：</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>SpringBoot项目bootstrap.yml配置文件不加载：</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>bootstrap.yml需要引入springcloud的包才会加载。</span></p> <div class="cnblogs_code"> <pre><span style='font-family: "comic sans ms", sans-serif'>&lt;dependency&gt;      &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;      &lt;artifactId&gt;spring-cloud-context&lt;/artifactId&gt;      &lt;version&gt;${spring-cloud-context.version}&lt;/version&gt;  &lt;/dependency&gt;</span></pre> </div> <p><span style='font-family: "comic sans ms", sans-serif'>此问题我并没有遇到，如遇到此问题可按如上方式进行尝试解决。</span></p> <h2><span style='font-family: "comic sans ms", sans-serif'>三、Nacos搭建</span></h2> <p><span style='font-family: "comic sans ms", sans-serif'>1、Nacos下载。去到官网下载各个版本的压缩包。<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/alibaba/nacos/releases"  target="_blank"  rel="nofollow">下载地址</a>。我用的是1.4.2版本。最新版本目前为2.0.3。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>　  本地：下载.zip文件解压到本地使用。Linux：下载.tar.gz文件部署到Linux环境解压使用。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>　  如何启动Nacos服务查询官方文档。上面都有说明。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>2、搭建测试环境集群。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>首先建立三台测试服务器。如<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://10.8.207.91/"   rel="nofollow">1</a>92.168.1.1，192.168.1.2， 192.168.1.3。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>先将下载好的nacos-server-1.4.2.tar.gz文件上传到三台测试服务器上。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>unzip nacos-server-1.3.0.zip 或者 tar -xvf nacos-server-1.3.0.tar.gz解压上传的压缩文件。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>解压之后，进到conf文件夹下，有一个cluster.conf.example文件。可以cp cluster.conf.example cluster.conf将原文件备份保存，然后创建一个新的cluster.conf文件使用。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>ps：此处如不做备份，则使用cluster.conf文件需要将原来的.example后缀删除使用.conf文件。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>cat cluster.conf命令查看此文件，在此文件中，请每行配置成ip:port形式。如：</span></p> <div class="cnblogs_code"> <pre><span style='font-family: "comic sans ms", sans-serif'><span style="color: rgba(0, 0, 0, 1)"># ip:port </span>192.168.1.1:8848 192.168.1.2:8848 192.168.1.3:8848</span></pre> </div> <p><span style='font-family: "comic sans ms", sans-serif'>3、启动服务器。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>启动服务器之前还有一步操作，需要执行一个使用外置数据源的sql脚本，此脚本在下载的nacos压缩包中自带，直接建立数据库执行就好。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>执行脚本结束后，需要修改conf文件夹下的application.properties配置文件。放开如下注释。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/bf8fda6b489d1acf9d46faa33f420525.jpg" alt="Spirngboot实现Nacos作为配置中心_在线工具"></span></p> <p><span style='font-family: "comic sans ms", sans-serif'> 修改mysql数据库配置。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>此时直接执行sh.startup.sh启动命令会报如下错误。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/573892141f69b72a897170a0e8247774.jpg" alt="Spirngboot实现Nacos作为配置中心_在线工具"></span></p> <p><span style='font-family: "comic sans ms", sans-serif'>解决方案。用vi命令配置jdk。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/2876cd94f4f349f952c953fc3e76f91f.jpg" alt="Spirngboot实现Nacos作为配置中心_在线工具"></span></p> <p><span style='font-family: "comic sans ms", sans-serif'>此时配置添加完成，执行启动命令，执行成功。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>4、相关配置。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/7996c783920c9c90cbcb10a79e168a4b.jpg" alt="Spirngboot实现Nacos作为配置中心_在线工具"></span></p> <p><span style='font-family: "comic sans ms", sans-serif'> 下载下来的nacos默认此处为false。我们要将此处权限修改为true。如果为false则登录nacos时无需验证用户名和密码。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/a3a56f24d021df7346800ba367e90350.jpg" alt="Spirngboot实现Nacos作为配置中心_在线工具"></span></p> <p><span style='font-family: "comic sans ms", sans-serif'>此处可以配置为false。nacos增长的日志太快，且有大部分是无效日志。如需要则打开。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>Nacos集群部署完成。登录格式：域名+/nacos 登录。管理员用户名密码默认都为nacos。进入可视化界面可进行修改。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>ps:发现一篇讲解更详细的博文。<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/idcode/p/14551370.html#Nacos_343"  target="_blank"  rel="nofollow">戳</a>。</span></p> <h2><span style='font-family: "comic sans ms", sans-serif'>四、代码配置</span></h2> <p><span style='font-family: "comic sans ms", sans-serif'>本项目结构如图。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/5b45a59b69972009f4264dde64da9e43.jpg" alt="Spirngboot实现Nacos作为配置中心_在线工具"></span></p> <p><span style='font-family: "comic sans ms", sans-serif'> 在父依赖中配置profiles做环境区分。</span></p> <div class="cnblogs_code"> <pre><span style='font-family: "comic sans ms", sans-serif'>&lt;!--开发环境--&gt;         &lt;profile&gt;             &lt;id&gt;dev&lt;/id&gt;             &lt;properties&gt;                 &lt;profileActive&gt;dev&lt;/profileActive&gt;                 &lt;profileActiveNacosServerAddr&gt;192.168.1.1:8848,192.168.1.2:8848,192.168.1.3:8848&lt;/profileActiveNacosServerAddr&gt;                 &lt;profileNacosNameSpace&gt;lmes-dev&lt;/profileNacosNameSpace&gt;                 &lt;profileNacosConfigNameSpace&gt;生成的namespaceid&lt;/profileNacosConfigNameSpace&gt;                 &lt;profileNacosUsername&gt;用户名&lt;/profileNacosUsername&gt;                 &lt;profileNacosPassword&gt;密码&lt;/profileNacosPassword&gt;             &lt;/properties&gt;             &lt;activation&gt;                 &lt;activeByDefault&gt;<span style="color: rgba(0, 0, 255, 1)">true</span>&lt;/activeByDefault&gt;             &lt;/activation&gt;         &lt;/profile&gt;</span></pre> </div> <p><span style='font-family: "comic sans ms", sans-serif'>每个服务中需添加bootstrap.yml文件。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/14e085602e4e3a7c6781924240d6d8cb.jpg" alt="Spirngboot实现Nacos作为配置中心_在线工具"></span></p> <p><span style='font-family: "comic sans ms", sans-serif'> 配置如下：</span></p> <div class="cnblogs_code"> <pre><span style='font-family: "comic sans ms", sans-serif'><span style="color: rgba(0, 0, 0, 1)">spring:   application: #微服务名称     name: lmes</span>-<span style="color: rgba(0, 0, 0, 1)">agentmanagement   main:     allow</span>-bean-definition-overriding: <span style="color: rgba(0, 0, 255, 1)">true   -----不知道干啥的 之后有需要可进行分析</span><span style="color: rgba(0, 0, 0, 1)">   cloud:     nacos:       username: @profileNacosUsername@       password: @profileNacosPassword@       # nacos配置中心配置       config:         server</span>-<span style="color: rgba(0, 0, 0, 1)">addr: @profileActiveNacosServerAddr@         file</span>-<span style="color: rgba(0, 0, 0, 1)">extension: yml         group: @profileActive@         namespace: @profileNacosConfigNameSpace@         extension</span>-<span style="color: rgba(0, 0, 0, 1)">configs:           </span>- data-id: lmes-<span style="color: rgba(0, 0, 0, 1)">agentmanagement             group: @profileActive@             refresh: </span><span style="color: rgba(0, 0, 255, 1)">true</span></span></pre> </div> <p><span style='font-family: "comic sans ms", sans-serif'> 父依赖pom文件中还需要添加如下配置：</span></p> <div class="cnblogs_code"> <pre><span style='font-family: "comic sans ms", sans-serif'>&lt;build&gt;         &lt;resources&gt;             &lt;resource&gt;                 &lt;filtering&gt;<span style="color: rgba(0, 0, 255, 1)">true</span>&lt;/filtering&gt;    ----- true表示文件中可以获取到pom文件中的配置。                 &lt;directory&gt;src/main/resources&lt;/directory&gt;  -----作用域到这个文件夹下面的文件                 &lt;excludes&gt;                     &lt;exclude&gt;config/application*.yml&lt;/exclude&gt;  -----exclude排除某些文件  include包括某些文件                 &lt;/excludes&gt;             &lt;/resource&gt;         &lt;/resources&gt;         &lt;plugins&gt;             &lt;plugin&gt;                 &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;                 &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;                 &lt;configuration&gt;                     &lt;layout&gt;JAR&lt;/layout&gt;                     &lt;finalName&gt;${project.name}-server&lt;/finalName&gt;                     &lt;outputDirectory&gt;../install/servers/${project.artifactId}&lt;/outputDirectory&gt;                 &lt;/configuration&gt;                 &lt;executions&gt;                     &lt;execution&gt;                         &lt;goals&gt;                             &lt;goal&gt;repackage&lt;/goal&gt;                         &lt;/goals&gt;                     &lt;/execution&gt;                 &lt;/executions&gt;             &lt;/plugin&gt;         &lt;/plugins&gt;     &lt;/build&gt;</span></pre> </div> <p><span style='font-family: "comic sans ms", sans-serif'>检测bootstrap.yml文件有没有成功加载pml文件中配置的数据：</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>idea----clean----install</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>去看项目中target下的bootstrap有没有印上相应的值。</span></p> <h2><span style='font-family: "comic sans ms", sans-serif'>五、发布测试环境</span></h2> <p><span style='font-family: "comic sans ms", sans-serif'>打包成功后会在install中生成对应服务的jar包。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>把生成的jar包放到对应的服务器上。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>操作MobaXterm。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>先进入到对应的服务器，ps -ef| grep java 查看存活线程。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>找到对应的服务进入到对应目录下面。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'><img decoding="async" src="http://img.555519.xyz/uploads3/20220501/6f726a3aab920e0199fed5a08e7fad97.jpg" alt="Spirngboot实现Nacos作为配置中心_在线工具"></span></p> <p> </p> <p><span style='font-family: "comic sans ms", sans-serif'> 找到启动文件。cat查看启动文件。没有kill命令需要执行 kill -9 命令杀掉线程重新发布。 启动文件中可能会有$1 $2 这种参数，需注意。</span></p> <p><span style='font-family: "comic sans ms", sans-serif'>至此，nacos配置中心部署完成。</span></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-69101.htm">宠物品牌大全排行榜图片下载（宠物品牌大全排行榜图片下载软件）</a></p>
+                                        <p>下一个：<a href="/news/article-69753.htm">重庆宠物领养平台官网电话号码是多少（重庆最大免费宠物领养平台）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-56510.htm" title="国内宠物粮品牌上市公司有哪些（国内宠物粮品牌上市公司有哪些名字）">国内宠物粮品牌上市公司有哪些（国内宠物粮品牌上市公司有哪些名字）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-19-free-node-subscribe-links.htm" title="推荐VPN | 2月19日18.4M/S|免费VPN/Shadowrocket/Clash/SSR/V2ray免费节点链接地址">推荐VPN | 2月19日18.4M/S|免费VPN/Shadowrocket/Clash/SSR/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-64068.htm" title="mysql limit和offset用法_在线工具">mysql limit和offset用法_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-69101.htm" title="宠物品牌大全排行榜图片下载（宠物品牌大全排行榜图片下载软件）">宠物品牌大全排行榜图片下载（宠物品牌大全排行榜图片下载软件）</a></li>
+                        <li class="py-2"><a href="/news/article-53913.htm" title="SpringSecurity核心功能详解">SpringSecurity核心功能详解</a></li>
+                        <li class="py-2"><a href="/news/article-66547.htm" title="SpringBoot下载Excel文件，解决文件损坏问题">SpringBoot下载Excel文件，解决文件损坏问题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-free-subscribe-node.htm" title="推荐VPN | 2月18日22.2M/S|免费VPN/Shadowrocket/SSR/V2ray/Clash免费节点链接地址">推荐VPN | 2月18日22.2M/S|免费VPN/Shadowrocket/SSR/V2ray/Clash免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-65915.htm" title="一片枫叶还能说什么量词呢怎么写（一片枫叶还有一什么枫叶）">一片枫叶还能说什么量词呢怎么写（一片枫叶还有一什么枫叶）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-v2ray-subscribe.htm" title="推荐VPN | 3月2日20.5M/S|免费VPN/V2ray/Shadowrocket/Clash/SSR免费节点链接地址">推荐VPN | 3月2日20.5M/S|免费VPN/V2ray/Shadowrocket/Clash/SSR免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-63455.htm" title="宠物店生意从开业不太好怎么办（宠物店刚开业怎么做活动）">宠物店生意从开业不太好怎么办（宠物店刚开业怎么做活动）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <section class="footer-2">
+        <footer class="container footer-2-container  d-flex align-items-center">
+            <div class="col-md-4 d-flex justify-content-center justify-content-md-start">
+                <p class="footer2-paragraph">© All rights reserved.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <a href="#" class="text-decoration-none">
+                    <iconify-icon class="footer-2-icon px-2" icon="ri:facebook-fill"></iconify-icon>
+                </a>
+                <a href="#" class="text-decoration-none">
+                    <iconify-icon class="footer-2-icon px-2" icon="ri:twitter-fill"></iconify-icon>
+                </a>
+                <a href="#" class="text-decoration-none">
+                    <iconify-icon class="footer-2-icon px-2" icon="ri:instagram-fill"></iconify-icon>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <p class="footer2-paragraph d-flex justify-content-center justify-content-md-end">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    推荐VPN 订阅链接节点官网 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+    </section>
+    <!-- Scripts  Starts -->
+    <script src="/assets/website/js/frontend/vlessnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/vlessnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/vlessnode/script.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
