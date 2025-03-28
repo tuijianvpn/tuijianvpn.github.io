@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://tuijianvpn.github.io/news/article-83341.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何在vue3中实现自动注入路由</title>
+        <meta name="description" content="什么是Automatic Routes 我知道这个概念是来自NuxtJs的一个特性：Automatic Routes（自动注入路由）。 平时使用带有vue-router 的Vue 应用程序时，您必须设" />
+        <link rel="icon" href="/assets/website/img/vlessnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="推荐VPN 订阅链接节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://tuijianvpn.github.io/news/article-83341.htm" />
+    <meta property="og:site_name" content="推荐VPN 订阅链接节点官网" />
+    <meta property="og:title" content="如何在vue3中实现自动注入路由" />
+    <meta property="og:image" content="https://tuijianvpn.github.io/uploads/20240826/ce7807988d9530f44b90d23816a9729c.webp" />
+        <meta property="og:release_date" content="2025-03-28T09:55:40" />
+    <meta property="og:updated_time" content="2025-03-28T09:55:40" />
+        <meta property="og:description" content="什么是Automatic Routes 我知道这个概念是来自NuxtJs的一个特性：Automatic Routes（自动注入路由）。 平时使用带有vue-router 的Vue 应用程序时，您必须设" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="如何在vue3中实现自动注入路由">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/vlessnode/vendor.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/vlessnode/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- script ================================================== -->
+    <script src="/assets/website/js/frontend/vlessnode/modernizr.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9HP78JKJK6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9HP78JKJK6');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Navigation Section Starts -->
+    <section id="navigation-bar" class="navigation position-fixed">
+        <nav id="navbar-example2" class="navbar navbar-expand-lg ">
+            <div class="navigation container-fluid d-flex flex-wrap align-items-center my-2 pe-4 ps-5 ">
+                <div class="col-md-3 brand-logo">
+                    <a href="/" class="d-inline-flex link-body-emphasis">
+                                        <span>推荐VPN</span>
+                                        </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Menu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav align-items-center flex-grow-1">
+                                                        <li class="nav-list mx-3">
+                                <a href="/" class="nav-link px-2">
+                                    <h5> 首页 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/free-nodes/" class="nav-link px-2">
+                                    <h5> 免费节点 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/paid-subscribe/" class="nav-link px-2">
+                                    <h5> 推荐机场 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/news/" class="nav-link px-2">
+                                    <h5> 新闻资讯 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/client.htm" class="nav-link px-2">
+                                    <h5> 客户端 </h5>
+                                </a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <!-- Hero Section Starts -->
+    <section id="hero">
+        <div id="resources" class="hero container py-5 my-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6">
+                </div>
+                <div class="col-lg-6">
+                    <div class="breadcrumb ">
+                        <span class="item">
+                            <a href="/">
+                                <h5> <u>首页</u> </h5>
+                            </a>
+                        </span>
+                        &nbsp;<h5>/</h5> &nbsp; 
+                        <span class="item">
+                            <a href="/news/">
+                                <h5> <u>新闻资讯</u> </h5>
+                            </a>
+                        </span>
+                        &nbsp;<h5>/</h5> &nbsp; 
+
+                        <span class="item">
+                            <h5>正文</h5>
+                        </span>
+                    </div>
+                    <h1 class=" lh-1 mb-3">如何在vue3中实现自动注入路由</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Feature Section Starts -->
+    <section id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3> <a id="Automatic_Routes_0" rel="nofollow"></a>什么是Automatic Routes</h3> <p>我知道这个概念是来自<code>NuxtJs</code>的一个特性：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://nuxtjs.org/docs/get-started/routing/#automatic-routes"  rel="nofollow">Automatic Routes</a>（自动注入路由）。</p> <p>平时使用带有<code>vue-router</code> 的Vue 应用程序时，您必须设置一个配置文件（即 <code>router.js</code>）并手动将所有路由添加到其中。而<code>Nuxt</code> 会根据您提供的 pages 目录中的 Vue 文件为您自动生成 <code>vue-router</code> 配置。这意味着您永远不必再次编写路由器配置！ <code>Nuxt</code> 还为您的所有路由提供自动代码拆分。</p> <h3> <a id="Automatic_Routes_6" rel="nofollow"></a>Automatic Routes的好处</h3> <ul> <li>快速开发：通过创建文件夹，自动生成routes。同时，不需要再考虑路由方面的bug了。</li> </ul> <h3> <a id="Automatic_Routes_10" rel="nofollow"></a>Automatic Routes的例子</h3> <p>您的项目目录如下：</p> <pre><code>src ├── views │   ├── index.vue │   ├── about.vue │   └── user │       ├── about.vue │       └── index.vue </code></pre> <p>对应自动生成的routes：</p> <pre><code>[{   component: () =&gt; import('@/views/index.vue'),   path: '/' }, {   component: () =&gt; import('@/views/about.vue'),   path: '/about' }, {   component: () =&gt; import('@/views/user/index.vue'),   path: '/user/' }, {   component: () =&gt; import('@/views/user/about.vue'),   path: '/user/about' }] </code></pre> <h3> <a id="_45" rel="nofollow"></a>实现</h3> <h4> <a id="_47" rel="nofollow"></a><strong>实现环境</strong><br /> </h4> <p>vue3、vue-cli、vue-router</p> <h4> <a id="_51" rel="nofollow"></a><strong>实现思路</strong><br /> </h4> <ul> <li>需要一个能读取文件路径的javascript api。虽然我们无法使用nodejs的file api,但是webpack的require.context ()可以满足该需求。</li> <li>使用 import（）懒加载路由。</li> <li>循环中获取并修改文件路径，添加route</li> </ul> <h4> <a id="_57" rel="nofollow"></a><strong>实现代码</strong><br /> </h4> <p>找到router的配置文件，如/src/router/index.js。修改如下：</p> <pre><code class="prism language-js"><span class="token keyword">import</span> <span class="token punctuation">{<!-- --></span> createRouter<span class="token punctuation">,</span> createWebHashHistory <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-router'</span><span class="token punctuation">;</span>  <span class="token comment">// 自动注入路由</span> <span class="token keyword">const</span> modules <span class="token operator">=</span> require<span class="token punctuation">.</span><span class="token function">context</span><span class="token punctuation">(</span><span class="token string">'../views'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">.vue</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">const</span> autoRoutes <span class="token operator">=</span> modules<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>   <span class="token keyword">const</span> viewName <span class="token operator">=</span> item<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token keyword">const</span> path <span class="token operator">=</span> item<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'.vue'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token keyword">const</span> <span class="token function-variable function">viewModule</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">../views/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${<!-- --></span>viewName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token keyword">return</span> <span class="token punctuation">{<!-- --></span>     path<span class="token punctuation">,</span>     component<span class="token operator">:</span> viewModule<span class="token punctuation">,</span>   <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">const</span> routes <span class="token operator">=</span> autoRoutes<span class="token punctuation">;</span>  <span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">createRouter</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>   history<span class="token operator">:</span> <span class="token function">createWebHashHistory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>   routes<span class="token punctuation">,</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token keyword">export</span> <span class="token keyword">default</span> router<span class="token punctuation">;</span> </code></pre> <p>如此即能实现上例的效果</p> <h3> <a id="_87" rel="nofollow"></a>更多</h3> <p>此代码只是简单地演示实现。你可以根据自己的需求，添加更多的内容。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-82623.htm">宠物托运检疫证明去哪里办 西安宠物托运检疫证明去哪里办</a></p>
+                                        <p>下一个：<a href="/news/article-83342.htm">宠物打完疫苗后多久检测抗体（宠物打完疫苗多久可以查抗体）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-54853.htm" title="动物疫苗销售好做吗现在 动物疫苗销售好做吗现在怎么样">动物疫苗销售好做吗现在 动物疫苗销售好做吗现在怎么样</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-21-free-node-subscribe-links.htm" title="推荐VPN | 2月21日19.3M/S|免费VPN/SSR/V2ray/Clash/Shadowrocket免费节点链接地址">推荐VPN | 2月21日19.3M/S|免费VPN/SSR/V2ray/Clash/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-28-node-share-links.htm" title="推荐VPN | 3月28日22.3M/S|免费VPN/V2ray/SSR/Clash/Shadowrocket免费节点链接地址">推荐VPN | 3月28日22.3M/S|免费VPN/V2ray/SSR/Clash/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-64068.htm" title="mysql limit和offset用法_在线工具">mysql limit和offset用法_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-55404.htm" title="北京动物观赏医院电话号码（北京观赏宠物医院电话）">北京动物观赏医院电话号码（北京观赏宠物医院电话）</a></li>
+                        <li class="py-2"><a href="/news/article-79846.htm" title="机器学习笔记 十五：随机森林（Random Forest）评估机器学习模型的特征重要性">机器学习笔记 十五：随机森林（Random Forest）评估机器学习模型的特征重要性</a></li>
+                        <li class="py-2"><a href="/news/article-54852.htm" title="Pip 使用简易指南">Pip 使用简易指南</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-1-free-v2ray.htm" title="推荐VPN | 3月1日22M/S|免费VPN/Clash/Shadowrocket/SSR/V2ray免费节点链接地址">推荐VPN | 3月1日22M/S|免费VPN/Clash/Shadowrocket/SSR/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-free-subscribe-node.htm" title="推荐VPN | 3月8日19.5M/S|免费VPN/V2ray/Clash/SSR/Shadowrocket免费节点链接地址">推荐VPN | 3月8日19.5M/S|免费VPN/V2ray/Clash/SSR/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-57071.htm" title="宠物领养系统论文中期检查表模板（宠物领养项目背景）">宠物领养系统论文中期检查表模板（宠物领养项目背景）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <section class="footer-2">
+        <footer class="container footer-2-container  d-flex align-items-center">
+            <div class="col-md-4 d-flex justify-content-center justify-content-md-start">
+                <p class="footer2-paragraph">© All rights reserved.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <a href="#" class="text-decoration-none">
+                    <iconify-icon class="footer-2-icon px-2" icon="ri:facebook-fill"></iconify-icon>
+                </a>
+                <a href="#" class="text-decoration-none">
+                    <iconify-icon class="footer-2-icon px-2" icon="ri:twitter-fill"></iconify-icon>
+                </a>
+                <a href="#" class="text-decoration-none">
+                    <iconify-icon class="footer-2-icon px-2" icon="ri:instagram-fill"></iconify-icon>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <p class="footer2-paragraph d-flex justify-content-center justify-content-md-end">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    推荐VPN 订阅链接节点官网 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+    </section>
+    <!-- Scripts  Starts -->
+    <script src="/assets/website/js/frontend/vlessnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/vlessnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/vlessnode/script.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
