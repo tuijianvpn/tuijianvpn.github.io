@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://tuijianvpn.github.io/news/article-86905.htm" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布nuget包的正确姿势&#8212;cicd自动打包发布nuget包</title>
+        <meta name="description" content="首先新建项目  项目名随便取，这里就叫它GuiH.ClassLibrary  默认即可，需要改目标版本时，等创建好再改  项目创建好了  随便写个接口方法 namespace GuiH.ClassLi" />
+        <link rel="icon" href="/assets/website/img/vlessnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="推荐VPN 订阅链接节点官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://tuijianvpn.github.io/news/article-86905.htm" />
+    <meta property="og:site_name" content="推荐VPN 订阅链接节点官网" />
+    <meta property="og:title" content="发布nuget包的正确姿势&#8212;cicd自动打包发布nuget包" />
+    <meta property="og:image" content="https://tuijianvpn.github.io/uploads/20240826/e930fd191b72b37c11904855b4802131.webp" />
+        <meta property="og:release_date" content="2025-04-02T07:45:02" />
+    <meta property="og:updated_time" content="2025-04-02T07:45:02" />
+        <meta property="og:description" content="首先新建项目  项目名随便取，这里就叫它GuiH.ClassLibrary  默认即可，需要改目标版本时，等创建好再改  项目创建好了  随便写个接口方法 namespace GuiH.ClassLi" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="发布nuget包的正确姿势&#8212;cicd自动打包发布nuget包">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/vlessnode/vendor.css">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/vlessnode/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- script ================================================== -->
+    <script src="/assets/website/js/frontend/vlessnode/modernizr.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9HP78JKJK6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9HP78JKJK6');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Navigation Section Starts -->
+    <section id="navigation-bar" class="navigation position-fixed">
+        <nav id="navbar-example2" class="navbar navbar-expand-lg ">
+            <div class="navigation container-fluid d-flex flex-wrap align-items-center my-2 pe-4 ps-5 ">
+                <div class="col-md-3 brand-logo">
+                    <a href="/" class="d-inline-flex link-body-emphasis">
+                                        <span>推荐VPN</span>
+                                        </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Menu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav align-items-center flex-grow-1">
+                                                        <li class="nav-list mx-3">
+                                <a href="/" class="nav-link px-2">
+                                    <h5> 首页 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/free-nodes/" class="nav-link px-2">
+                                    <h5> 免费节点 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/paid-subscribe/" class="nav-link px-2">
+                                    <h5> 推荐机场 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/news/" class="nav-link px-2">
+                                    <h5> 新闻资讯 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/client.htm" class="nav-link px-2">
+                                    <h5> 客户端 </h5>
+                                </a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <!-- Hero Section Starts -->
+    <section id="hero">
+        <div id="resources" class="hero container py-5 my-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6">
+                </div>
+                <div class="col-lg-6">
+                    <div class="breadcrumb ">
+                        <span class="item">
+                            <a href="/">
+                                <h5> <u>首页</u> </h5>
+                            </a>
+                        </span>
+                        &nbsp;<h5>/</h5> &nbsp; 
+                        <span class="item">
+                            <a href="/news/">
+                                <h5> <u>新闻资讯</u> </h5>
+                            </a>
+                        </span>
+                        &nbsp;<h5>/</h5> &nbsp; 
+
+                        <span class="item">
+                            <h5>正文</h5>
+                        </span>
+                    </div>
+                    <h1 class=" lh-1 mb-3">发布nuget包的正确姿势&#8212;cicd自动打包发布nuget包</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Feature Section Starts -->
+    <section id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				</h1> <h2 id="首先新建项目">首先新建项目</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/956082d0c7de0c69d91d833e92051993.jpg" alt="发布nuget包的正确姿势---cicd自动打包发布nuget包"></p> <h2 id="项目名随便取这里就叫它guihclasslibrary">项目名随便取，这里就叫它<code>GuiH.ClassLibrary</code></h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c0b46d05393a8832c8c64c0b628b6ea3.jpg" alt="发布nuget包的正确姿势---cicd自动打包发布nuget包"></p> <h2 id="默认即可需要改目标版本时等创建好再改">默认即可，需要改目标版本时，等创建好再改</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/63ee1507c9f9b5e0a86fe4102b7b9aa5.jpg" alt="发布nuget包的正确姿势---cicd自动打包发布nuget包"></p> <h2 id="项目创建好了">项目创建好了</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/f4a4bdbf3c79967ca43a40edf0bbfcf2.jpg" alt="发布nuget包的正确姿势---cicd自动打包发布nuget包"></p> <h2 id="随便写个接口方法">随便写个接口方法</h2> <pre><code class="language-C#">namespace GuiH.ClassLibrary {     public class Class1     {         public static void Test()         {             Console.WriteLine("Hello Nuget！！！");         }     } }</code></pre> <h2 id="接下来修改工程文件默认情况是这样的">接下来修改工程文件，默认情况是这样的</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/e9d3249f549b96d1a84cd1c00b2ddd68.jpg" alt="发布nuget包的正确姿势---cicd自动打包发布nuget包"><br /> 我们添加下面一些配置</p> <pre><code class="language-xml">&lt;Project Sdk="Microsoft.NET.Sdk"&gt;  	&lt;PropertyGroup&gt; 		&lt;TargetFramework&gt;net6.0&lt;/TargetFramework&gt; 		&lt;ImplicitUsings&gt;enable&lt;/ImplicitUsings&gt; 		&lt;Nullable&gt;enable&lt;/Nullable&gt;  		&lt;!--以下是我们自己添加的--&gt; 		&lt;!--版本号，重要性不必多说--&gt; 		&lt;Version&gt;1.0.0&lt;/Version&gt; 		&lt;!--添加该配置，在编译时进行打包--&gt; 		&lt;GeneratePackageOnBuild&gt;true&lt;/GeneratePackageOnBuild&gt; 		&lt;!--添加该配置才会生成注释文件，默认无注释--&gt; 		&lt;GenerateDocumentationFile&gt;true&lt;/GenerateDocumentationFile&gt; 	&lt;/PropertyGroup&gt;  &lt;/Project&gt;</code></pre> <h2 id="执行编译命令根据上面的配置编译后会自动进行打包">执行编译命令，根据上面的配置，编译后会自动进行打包</h2> <pre><code>// 该命令在GuiH.ClassLibrary项目根目录下执行 dotnet build -c=Release</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/480ad757600fd0db3b92432a54685e27.jpg" alt="发布nuget包的正确姿势---cicd自动打包发布nuget包"><br /> 命令行中也提示了<code>已成功创建包“E:\工作区\GuiH.ClassLibrary\GuiH.ClassLibrary\bin\Release\GuiH.ClassLibrary.1.0.0.nupkg”</code></p> <h2 id="将guihclasslibrary100nupkg推送至nuget仓库可以自己搭建也可以是微软官方nuget仓库">将<code>GuiH.ClassLibrary.1.0.0.nupkg</code>推送至nuget仓库，可以自己搭建，也可以是微软官方nuget仓库</h2> <h3 id="在wwwnugetorg注册一个账号然后获取apikey">在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.nuget.org/"  target="_blank" rel="nofollow">www.nuget.org</a>注册一个账号，然后获取<code>apikey</code></h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/47a493d99c836f9d60cefe52e980afbf.jpg" alt="发布nuget包的正确姿势---cicd自动打包发布nuget包"><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/26dbcf008194d9abeb15e1762a8f188c.jpg" alt="发布nuget包的正确姿势---cicd自动打包发布nuget包"></p> <p>详细发布nuget命令参考：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/dotnet/core/tools/dotnet-nuget-push"  target="_blank" rel="nofollow">dotnet-nuget-push</a></p> <pre><code>// $apikey 替换为你的apikey dotnet nuget push ./bin/Release/GuiH.ClassLibrary.1.0.0.nupkg -k $apikey -s https://api.nuget.org/v3/index.json --skip-duplicate  正在将 GuiH.ClassLibrary.1.0.0.nupkg 推送到 'https://www.nuget.org/api/v2/package'...   PUT https://www.nuget.org/api/v2/package/ warn : All published packages should have license information specified. Learn more: https://aka.ms/deprecateLicenseUrl.   Created https://www.nuget.org/api/v2/package/ 1404 毫秒 已推送包。</code></pre> <h2 id="搜索发布的包一般会短暂延迟几分钟才能搜到在项目中使用应该创建一个控制台测试知道就好">搜索发布的包(一般会短暂延迟几分钟才能搜到),在项目中使用（应该创建一个控制台测试，知道就好~）</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/865b06961b78a419db286cad578c3b45.jpg" alt="发布nuget包的正确姿势---cicd自动打包发布nuget包"><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4a26e8f0e6fb68b1a8ba64d9a57a9696.jpg" alt="发布nuget包的正确姿势---cicd自动打包发布nuget包"></p> <h2 id="多种目标平台支持">多种目标平台支持</h2> <p>例如兼容<code>framwork4.6.1</code>，修改工程文件如下,注意单词<code>TargetFrameworks</code>的单复数</p> <pre><code>// 修改前 &lt;TargetFramework&gt;net6.0&lt;/TargetFramework&gt; // 修改后 &lt;TargetFrameworks&gt;net6.0;net461&lt;/TargetFrameworks&gt;</code></pre> <p>或只支持net461</p> <pre><code>&lt;TargetFrameworks&gt;net461&lt;/TargetFrameworks&gt;</code></pre> <h2 id="cicd">CICD</h2> <p>cicd脚本中核心的两条命令就是上述两个，运行环境安装相应的sdk(.net5/.net6)即可。</p> <h2 id="关于如何多平台兼容的详细内容下篇文章介绍">关于如何多平台兼容的详细内容，下篇文章介绍。</h2> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-86197.htm">动物医院上班时间是多久一次（动物医院几点下班）</a></p>
+                                        <p>下一个：<a href="/news/article-86906.htm">一元店货源批发市场雨伞（一块钱的雨伞）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-77094.htm" title="做梦梦见抱着别的女人（做梦梦见抱着别的女人撒尿）">做梦梦见抱着别的女人（做梦梦见抱着别的女人撒尿）</a></li>
+                        <li class="py-2"><a href="/news/article-86197.htm" title="动物医院上班时间是多久一次（动物医院几点下班）">动物医院上班时间是多久一次（动物医院几点下班）</a></li>
+                        <li class="py-2"><a href="/news/article-69753.htm" title="重庆宠物领养平台官网电话号码是多少（重庆最大免费宠物领养平台）">重庆宠物领养平台官网电话号码是多少（重庆最大免费宠物领养平台）</a></li>
+                        <li class="py-2"><a href="/news/article-84039.htm" title="centos7 64位下mysql5.7的安装配置卸载">centos7 64位下mysql5.7的安装配置卸载</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-node-share.htm" title="推荐VPN | 3月16日22.4M/S|免费VPN/Clash/Shadowrocket/SSR/V2ray免费节点链接地址">推荐VPN | 3月16日22.4M/S|免费VPN/Clash/Shadowrocket/SSR/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-node-share-links.htm" title="推荐VPN | 3月11日18M/S|免费VPN/V2ray/SSR/Clash/Shadowrocket免费节点链接地址">推荐VPN | 3月11日18M/S|免费VPN/V2ray/SSR/Clash/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-77780.htm" title="猫内外驱虫用什么药好呢（猫咪驱虫内外驱是怎样驱）">猫内外驱虫用什么药好呢（猫咪驱虫内外驱是怎样驱）</a></li>
+                        <li class="py-2"><a href="/news/article-67180.htm" title="Mac下配置Maven以及IDEA Maven配置">Mac下配置Maven以及IDEA Maven配置</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-free-v2ray-subscribe.htm" title="推荐VPN | 3月20日18M/S|免费VPN/Clash/Shadowrocket/V2ray/SSR免费节点链接地址">推荐VPN | 3月20日18M/S|免费VPN/Clash/Shadowrocket/V2ray/SSR免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-72380.htm" title="领养宠物的协议书范本（领养宠物协议怎么写）">领养宠物的协议书范本（领养宠物协议怎么写）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <section class="footer-2">
+        <footer class="container footer-2-container  d-flex align-items-center">
+            <div class="col-md-4 d-flex justify-content-center justify-content-md-start">
+                <p class="footer2-paragraph">© All rights reserved.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <a href="#" class="text-decoration-none">
+                    <iconify-icon class="footer-2-icon px-2" icon="ri:facebook-fill"></iconify-icon>
+                </a>
+                <a href="#" class="text-decoration-none">
+                    <iconify-icon class="footer-2-icon px-2" icon="ri:twitter-fill"></iconify-icon>
+                </a>
+                <a href="#" class="text-decoration-none">
+                    <iconify-icon class="footer-2-icon px-2" icon="ri:instagram-fill"></iconify-icon>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <p class="footer2-paragraph d-flex justify-content-center justify-content-md-end">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    推荐VPN 订阅链接节点官网 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </footer>
+    </section>
+    <!-- Scripts  Starts -->
+    <script src="/assets/website/js/frontend/vlessnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/vlessnode/plugins.js"></script>
+    <script src="/assets/website/js/frontend/vlessnode/script.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/9.4.1/swiper-bundle.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0-alpha3/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
