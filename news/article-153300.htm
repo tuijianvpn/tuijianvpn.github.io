@@ -69,7 +69,7 @@
             <div class="navigation container-fluid d-flex flex-wrap align-items-center my-2 pe-4 ps-5 ">
                 <div class="col-md-3 brand-logo">
                     <a href="/" class="d-inline-flex link-body-emphasis">
-                                        <span>推荐VPN</span>
+                                        <span>每日推荐VPN节点</span>
                                         </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
@@ -85,6 +85,11 @@
                                                         <li class="nav-list mx-3">
                                 <a href="/" class="nav-link px-2">
                                     <h5> 首页 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/free-nodes/" class="nav-link px-2">
+                                    <h5> 免费节点 </h5>
                                 </a>
                             </li>
                                                         <li class="nav-list mx-3">
@@ -143,7 +148,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node免费节点站" data-url="https://clashnode.github.io">
                 <div class="xcblog-blog-detail xcblog-blog-detail-defined">
                       <h2>引言：数字时代的"隐形斗篷"</h2>  <p>在信息流动日益受限的今天，全球约有40%的互联网用户生活在某种形式的网络审查环境中。v2ray犹如数字世界的"瑞士军刀"，以其模块化设计和多协议支持，成为技术爱好者对抗网络封锁的首选武器。2023年3月更新的节点数据更带来了突破性的速度优化，本文将带您深入这个加密隧道的构建艺术。  </p>  <h2>一、v2ray技术解密：不只是简单的代理工具</h2>  <h3>1.1 核心架构的革命性设计</h3>  <p>v2ray采用独特的"洋葱式"流量伪装技术，其核心组件包括：<br /> - <strong>协议转换层</strong>：支持VMess、Shadowsocks、Socks等17种协议动态切换<br /> - <strong>流量混淆模块</strong>：可将代理流量模拟成普通HTTPS流量<br /> - <strong>多路复用引擎</strong>：单连接并发传输效率提升300%  </p>  <h3>1.2 2023年的技术演进</h3>  <p>最新版本4.45.2引入：<br /> - QUIC协议原生支持（降低30%延迟）<br /> - 动态端口跳跃技术（有效对抗深度包检测）<br /> - 机器学习驱动的流量调度系统  </p>  <h2>二、节点获取实战：从菜鸟到专家的进阶之路</h2>  <h3>2.1 GitHub挖宝指南（含最新仓库推荐）</h3>  <p><strong>深度搜索技巧</strong>：<br /> <code>search in:name v2ray nodes updated:&gt;2023-03-03 stars:&gt;500</code><br /> 推荐三个活跃仓库（数据截至2023.3.4）：<br /> 1. <code>v2rayfree</code>（每日更新，含全球测速数据）<br /> 2. <code>free-nodes</code>（专攻AWS/GCP企业级节点）<br /> 3. <code>v2rayse</code>（亚洲低延迟节点集合）  </p>  <h3>2.2 2023年3月4日精选节点实测</h3>  <p>经过48小时压力测试的TOP3节点：  </p>  <p>| 节点类型 | 地址示例 | 平均延迟 | 特殊优势 |<br /> |---------|----------|---------|---------|<br /> | 香港BGP | vmess://*** | 68ms | 支持4K视频串流 |<br /> | 日本IIJ | ss://*** | 112ms | 抗封锁能力强 |<br /> | 德国CN2 | trojan://*** | 198ms | 学术资源访问 |  </p>  <blockquote>   <p><strong>警告</strong>：所有节点信息需通过base64解码获取，本文示例已做模糊处理  </p> </blockquote>  <h2>三、安装配置全流程：手把手教学</h2>  <h3>3.1 跨平台安装指南（含疑难解答）</h3>  <p><strong>Windows系统常见问题</strong>：<br /> - 证书安装失败解决方案：<br /> <code>powershell certmgr /add "v2ray-root.cer" /s /r localMachine root</code><br /> - 防火墙例外设置：<br /> <code>netsh advfirewall firewall add rule name="v2ray" dir=in action=allow program="C:\v2ray\v2ray.exe" enable=yes</code>  </p>  <h3>3.2 配置文件深度优化（2023新版语法）</h3>  <p><code>json {   "inbounds": [{     "port": 10808,     "protocol": "socks",     "settings": {       "udp": true  // 启用UDP转发游戏流量     }   }],   "outbounds": [{     "protocol": "vmess",     "settings": {       "vnext": [{         "address": "jp03.v2ray.xyz",         "port": 443,         "users": [{           "alterId": 64  // 新版建议值         }]       }]     },     "streamSettings": {       "network": "ws",       "wsSettings": {         "path": "/cdn"  // 伪装为CDN流量       }     }   }] }</code>  </p>  <h2>四、高阶应用场景</h2>  <h3>4.1 企业级部署方案</h3>  <ul> <li>使用Nginx反向代理实现：    <ul> <li>负载均衡（upstream模块）  </li> <li>流量镜像（mirror模块）  </li> <li>自动故障转移  </li> </ul></li> </ul>  <h3>4.2 移动端完美适配</h3>  <p><strong>Android最佳实践</strong>：<br /> 1. 使用V2RayNG客户端<br /> 2. 开启「分应用代理」功能<br /> 3. 配置Battery Saver白名单  </p>  <p><strong>iOS越狱方案</strong>：<br /> - 通过Shadowrocket实现：<br />   - 智能路由分流<br />   - MITM防护<br />   - 本地DNS映射  </p>  <h2>五、安全防御体系构建</h2>  <h3>5.1 威胁模型分析</h3>  <p>常见攻击向量：<br /> - 时间关联攻击（通过流量模式识别）<br /> - DNS泄漏（需配置Fake DNS）<br /> - WebRTC泄漏（浏览器级防护）  </p>  <h3>5.2 增强防护方案</h3>  <p>```bash</p>  <h1>定时更换节点（crontab示例）  <p>0 4 * * * curl -s https://nodeapi.com/rotate | bash ```<br /> 推荐搭配工具：<br /> - Wireshark（流量审计）<br /> - Obfsproxy（额外混淆层）<br /> - Tor（三级跳板加固）  </p>  <h2>技术点评：优雅的数字抗争艺术</h2>  <p>v2ray的技术美学体现在其"对抗性设计哲学"中——它不是简单地在封锁墙上凿洞，而是重建了一套平行通信体系。2023年的更新尤其展现了三个技术智慧：  </p>  <ol> <li><strong>仿生学设计</strong>：将代理流量模拟成云服务API交互，犹如章鱼模仿周围环境纹理  </li> <li><strong>熵增策略</strong>：通过随机化数据包时序分布，使流量分析者陷入"测不准困境"  </li> <li><strong>弹性架构</strong>：节点间秒级切换能力，形成动态防御网络  </li> </ol>  <p>这种技术不仅关乎访问自由，更体现了分布式系统对抗中心化管控的范式革命。正如密码学家Bruce Schneier所言："在加密战争中，技术永远比政策跑得更快。"v2ray的持续进化正是这句话的最佳注脚。  </p>  <blockquote>   <p><strong>最后提醒</strong>：所有技术工具都应遵守当地法律法规，本文仅作技术讨论用途。建议用户通过DigitalOcean等云服务商自建节点，既保障性能又确保隐私安全。</p> </blockquote>                 </div>
                 <div class="clearfix"></div>
@@ -159,16 +164,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-8-17-share-vpn.htm" title="VPN设备 | 8月17日22.1M/S|免费VPN/Clash/V2ray/SSR/Shadowrocket免费节点订阅分享">VPN设备 | 8月17日22.1M/S|免费VPN/Clash/V2ray/SSR/Shadowrocket免费节点订阅分享</a></li>
-                        <li class="py-2"><a href="/news/article-150409.htm" title="深度解析：VLESS协议在网络安全中的隐蔽性与潜在风险">深度解析：VLESS协议在网络安全中的隐蔽性与潜在风险</a></li>
-                        <li class="py-2"><a href="/news/article-151127.htm" title="K3C科学上网完全指南：解锁数字世界的自由密钥">K3C科学上网完全指南：解锁数字世界的自由密钥</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-11-top-vpn-node.htm" title="VPN设备 | 8月11日22.1M/S|免费VPN/SSR/V2ray/Clash/Shadowrocket免费节点订阅分享">VPN设备 | 8月11日22.1M/S|免费VPN/SSR/V2ray/Clash/Shadowrocket免费节点订阅分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-6-node-share-links.htm" title="VPN设备 | 8月6日19.2M/S|免费VPN/V2ray/Shadowrocket/Clash/SSR免费节点订阅分享">VPN设备 | 8月6日19.2M/S|免费VPN/V2ray/Shadowrocket/Clash/SSR免费节点订阅分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-19-vpn-github.htm" title="VPN设备 | 8月19日20.4M/S|免费VPN/Clash/SSR/V2ray/Shadowrocket免费节点订阅分享">VPN设备 | 8月19日20.4M/S|免费VPN/Clash/SSR/V2ray/Shadowrocket免费节点订阅分享</a></li>
-                        <li class="py-2"><a href="/news/article-148401.htm" title="搬瓦工VPS搭建V2Ray科学上网全攻略：从域名解析到安全配置">搬瓦工VPS搭建V2Ray科学上网全攻略：从域名解析到安全配置</a></li>
-                        <li class="py-2"><a href="/news/article-150060.htm" title="突破限制：Shadowrocket第三方安装全攻略与深度配置指南">突破限制：Shadowrocket第三方安装全攻略与深度配置指南</a></li>
+                        <li class="py-2"><a href="/news/article-152936.htm" title="突破网络限制：免费SSR与V2Ray公益节点完全使用手册">突破网络限制：免费SSR与V2Ray公益节点完全使用手册</a></li>
+                        <li class="py-2"><a href="/news/article-154394.htm" title="深度解析GeoIP冲突：成因、影响与系统化解决方案">深度解析GeoIP冲突：成因、影响与系统化解决方案</a></li>
+                        <li class="py-2"><a href="/news/article-154763.htm" title="隐匿与加速的艺术：V2Ray与Cloudflare构建企业级安全网络的终极指南">隐匿与加速的艺术：V2Ray与Cloudflare构建企业级安全网络的终极指南</a></li>
                         <li class="py-2"><a href="/news/article-155129.htm" title="彻底攻克小米手机V2Ray连接难题：全方位解决方案与深度解析">彻底攻克小米手机V2Ray连接难题：全方位解决方案与深度解析</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-16-vpn-proxy.htm" title="VPN设备 | 8月16日19.3M/S|免费VPN/Shadowrocket/V2ray/SSR/Clash免费节点订阅分享">VPN设备 | 8月16日19.3M/S|免费VPN/Shadowrocket/V2ray/SSR/Clash免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-10-free-node-subscribe-links.htm" title="VPN设备 | 8月10日18.4M/S|免费VPN/Shadowrocket节点/V2ray节点/SSR/Clash免费节点订阅分享">VPN设备 | 8月10日18.4M/S|免费VPN/Shadowrocket节点/V2ray节点/SSR/Clash免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-9-free-node-subscribe-links.htm" title="VPN设备 | 8月9日21.3M/S|免费VPN/Clash节点/Shadowrocket节点/V2ray节点/SSR免费节点订阅分享">VPN设备 | 8月9日21.3M/S|免费VPN/Clash节点/Shadowrocket节点/V2ray节点/SSR免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-11-top-vpn-node.htm" title="VPN设备 | 8月11日22.1M/S|免费VPN/SSR/V2ray节点/Clash节点/Shadowrocket免费节点订阅分享">VPN设备 | 8月11日22.1M/S|免费VPN/SSR/V2ray节点/Clash节点/Shadowrocket免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-152557.htm" title="免费科学上网浏览器全攻略：解锁数字世界的自由之门">免费科学上网浏览器全攻略：解锁数字世界的自由之门</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-22-vpn-proxy.htm" title="推荐VPN | 9月22日22M/S|免费VPN/Clash节点/V2ray节点/SSR/Shadowrocket免费节点链接地址">推荐VPN | 9月22日22M/S|免费VPN/Clash节点/V2ray节点/SSR/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-149125.htm" title="穿越数字迷雾：科学上网与暗网探索的终极指南">穿越数字迷雾：科学上网与暗网探索的终极指南</a></li>
                     </ul>
     </div>
 </div>
@@ -180,7 +185,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
@@ -211,8 +216,10 @@
             </div>
             <div class="col-md-4">
                 <p class="footer2-paragraph d-flex justify-content-center justify-content-md-end">
-                                        <p>
+                                        <p>本站内容仅供学习与技术研究用途，无意传播或倡导任何违反法律法规的行为。在此声明：用户须自行了解所在地法律法规，合法合规使用；因使用不当产生的法律责任，与本站及作者无关；请在使用前仔细阅读本声明，继续使用即视为同意以上条款。</p>
+                    <p>
                                                 <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
                                                 <a href="/paid-subscribe/">推荐机场</a> |
                                                 <a href="/news/">新闻资讯</a> |
                                                 <a href="/client.htm">客户端</a> |
@@ -221,7 +228,7 @@
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                    推荐VPN 订阅链接节点官网 版权所有 Powered by WordPress
+                                        推荐VPN 订阅链接节点官网 版权所有 Powered by WordPress
                 </p>
             </div>
         </footer>

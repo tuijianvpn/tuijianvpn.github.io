@@ -69,7 +69,7 @@
             <div class="navigation container-fluid d-flex flex-wrap align-items-center my-2 pe-4 ps-5 ">
                 <div class="col-md-3 brand-logo">
                     <a href="/" class="d-inline-flex link-body-emphasis">
-                                        <span>推荐VPN</span>
+                                        <span>每日推荐VPN节点</span>
                                         </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
@@ -85,6 +85,11 @@
                                                         <li class="nav-list mx-3">
                                 <a href="/" class="nav-link px-2">
                                     <h5> 首页 </h5>
+                                </a>
+                            </li>
+                                                        <li class="nav-list mx-3">
+                                <a href="/free-nodes/" class="nav-link px-2">
+                                    <h5> 免费节点 </h5>
                                 </a>
                             </li>
                                                         <li class="nav-list mx-3">
@@ -143,7 +148,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node免费节点站" data-url="https://clashnode.github.io">
                 <div class="xcblog-blog-detail xcblog-blog-detail-defined">
                       <h2>引言：数字时代的自由通行证</h2>  <p>在信息流动如血液般重要的今天，全球仍有超过30个国家实行严格的网络审查制度。当谷歌搜索变成404、维基百科显示"连接重置"时，科学上网工具便成了数字世界的"万能钥匙"。本文将以专业视角剖析六种主流科学上网技术，从底层原理到实战技巧，助您在保障隐私安全的前提下，畅游无界互联网。  </p>  <hr />  <h2>第一章 VPN：网络世界的隐形斗篷</h2>  <h3>1.1 技术解剖</h3>  <p>VPN通过建立加密隧道，将用户设备与目标服务器连接，形成虚拟的"网络专线"。其核心在于：<br /> - <strong>IPsec/OpenVPN协议</strong>：采用军事级AES-256加密算法<br /> - <strong>双重跳转</strong>：部分高级VPN会通过多个服务器中转流量<br /> - <strong>Kill Switch</strong>：网络中断时自动切断连接防止IP泄漏  </p>  <h3>1.2 实战对比</h3>  <p>| 服务商       | 速度(Mbps) | 服务器数量 | 特殊功能               |<br /> |--------------|------------|------------|------------------------|<br /> | ExpressVPN   | 85+        | 3000+      |  TrustedServer技术      |<br /> | NordVPN      | 78+        | 5500+      | 洋葱路由叠加            |<br /> | ProtonVPN    | 65+        | 1700+      | 瑞士隐私法律保护        |  </p>  <blockquote>   <p><strong>专家点评</strong>：如同选择防弹衣，免费VPN可能成为数据泄漏的漏斗，付费服务在速度和隐私保护上具有压倒性优势。  </p> </blockquote>  <hr />  <h2>第二章 Shadowsocks：中国开发者的智慧结晶</h2>  <h3>2.1 技术演进</h3>  <p>源自@clowwindy的开源项目，采用SOCKS5代理协议创新：<br /> - <strong>混淆技术</strong>：使流量伪装成正常HTTPS连接<br /> - <strong>单边加速</strong>：通过UDP协议提升视频流传输效率<br /> - <strong>插件系统</strong>：支持v2ray-plugin等扩展  </p>  <h3>2.2 自建指南</h3>  <p>```python</p>  <h1>典型Docker部署命令  <p>docker run -d --name ss -e PASSWORD=your_pwd -p 8388:8388 shadowsocks/shadowsocks-libev ```<br /> <strong>注意</strong>：建议搭配CDN使用，将服务器IP隐藏在Cloudflare等平台后方。  </p>  <hr />  <h2>第三章 V2Ray：下一代代理架构</h2>  <h3>3.1 协议矩阵</h3>  <p><code>mermaid graph LR A[VMess] --&gt;|动态ID| B(TLS加密) A --&gt; C[WebSocket伪装] D[VLESS] --&gt;|零加密| E(XTLS流控)</code><br /> 相比Shadowsocks：<br /> - 多入口多出口设计<br /> - 支持mKCP协议对抗QoS限速<br /> - 可配置流量探测防御  </p>  <h3>3.2 路由策略示例</h3>  <p><code>json "routing": {   "domainStrategy": "IPIfNonMatch",   "rules": [     {       "type": "field",       "outboundTag": "direct",       "domain": ["geosite:cn"]     }   ] }</code>  </p>  <hr />  <h2>第四章 Tor：暗网与明网的摆渡者</h2>  <h3>4.1 三层洋葱路由</h3>  <ol> <li>入口节点（Guard Relay）  </li> <li>中间节点（Middle Relay）  </li> <li>出口节点（Exit Relay）  </li> </ol>  <p><strong>实测数据</strong>：<br /> - 延迟：平均增加800-1200ms<br /> - 带宽：通常限制在2Mbps以内<br /> - 隐蔽性：可抵抗国家级流量分析  </p>  <blockquote>   <p><strong>隐私警告</strong>：禁用浏览器插件、始终使用HTTPS、避免登录个人账户。  </p> </blockquote>  <hr />  <h2>第五章 代理服务器：古典而灵活的方案</h2>  <h3>5.1 协议全景图</h3>  <p><code>HTTP代理 --&gt; 仅限网页流量 SOCKS5 --&gt; 全协议支持 SSL隧道 --&gt; 加密穿透企业防火墙</code>  </p>  <h3>5.2 智能代理轮换方案</h3>  <p><code>bash while true; do   proxy=$(shuf -n 1 proxies.txt)   curl --proxy $proxy example.com   sleep $((RANDOM % 60 + 30)) done</code>  </p>  <hr />  <h2>第六章 SoftEther：企业级开源解决方案</h2>  <h3>6.1 性能基准测试</h3>  <p>| 协议       | 吞吐量 | NAT穿透 | 防火墙兼容 |<br /> |------------|--------|---------|------------|<br /> | L2TP/IPsec | 45Mbps | ×       | △          |<br /> | OpenVPN    | 68Mbps | △       | ○          |<br /> | SSTP       | 52Mbps | ○       | ◎          |  </p>  <p><strong>企业部署建议</strong>：<br /> - 日本/德国服务器作跳板<br /> - 启用证书双向认证<br /> - 配置DDNS应对IP变化  </p>  <hr />  <h2>终极对决：工具选型决策树</h2>  <p><code>mermaid graph TD A[需求] --&gt;|匿名优先| B(Tor) A --&gt;|速度优先| C(VPN商业服务) A --&gt;|技术可控| D(自建V2Ray) A --&gt;|临时使用| E(Web代理)</code>  </p>  <p><strong>2023年趋势预测</strong>：<br /> 1. QUIC协议代理工具崛起<br /> 2. 深度包检测(DPI)对抗白热化<br /> 3. 区块链技术应用于节点治理  </p>  <hr />  <h2>结语：在枷锁与自由之间</h2>  <p>当土耳其作家帕慕克说"审查制度是创造力之母"时，他或许预见了今天的技术博弈。这些科学上网工具不仅是代码的集合，更是数字时代公民权利的守护者。记住：最坚固的加密不是算法，而是持续学习的安全意识。  </p>  <blockquote>   <p><strong>哲思时刻</strong>：网络长城与翻墙技术的关系，恰似矛与盾的永恒之舞——每一次封锁升级都催生更优雅的技术解决方案，这场博弈终将推动整个互联网基础设施的进化。</p> </blockquote>                 </div>
                 <div class="clearfix"></div>
@@ -159,16 +164,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-8-14-share-vpn.htm" title="VPN设备 | 8月14日20.9M/S|免费VPN/Clash节点/Shadowrocket节点/V2ray节点/SSR免费节点订阅分享">VPN设备 | 8月14日20.9M/S|免费VPN/Clash节点/Shadowrocket节点/V2ray节点/SSR免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-12-share-vpn.htm" title="VPN设备 | 8月12日19.3M/S|免费VPN/Shadowrocket节点/SSR/V2ray节点/Clash免费节点订阅分享">VPN设备 | 8月12日19.3M/S|免费VPN/Shadowrocket节点/SSR/V2ray节点/Clash免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-20-top-vpn-node.htm" title="推荐VPN | 9月20日23M/S|免费VPN/V2ray节点/Clash节点/Shadowrocket节点/SSR免费节点链接地址">推荐VPN | 9月20日23M/S|免费VPN/V2ray节点/Clash节点/Shadowrocket节点/SSR免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-15-node-share.htm" title="推荐VPN | 9月15日18.4M/S|免费VPN/SSR/V2ray节点/Clash节点/Shadowrocket免费节点链接地址">推荐VPN | 9月15日18.4M/S|免费VPN/SSR/V2ray节点/Clash节点/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-9-free-node-subscribe-links.htm" title="VPN设备 | 8月9日21.3M/S|免费VPN/Clash节点/Shadowrocket节点/V2ray节点/SSR免费节点订阅分享">VPN设备 | 8月9日21.3M/S|免费VPN/Clash节点/Shadowrocket节点/V2ray节点/SSR免费节点订阅分享</a></li>
                         <li class="py-2"><a href="/news/article-148703.htm" title="掌握配置规则管理：Shadowrocket中删除规则的完整指南与深度解析">掌握配置规则管理：Shadowrocket中删除规则的完整指南与深度解析</a></li>
-                        <li class="py-2"><a href="/news/article-149125.htm" title="穿越数字迷雾：科学上网与暗网探索的终极指南">穿越数字迷雾：科学上网与暗网探索的终极指南</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-18-vpn-github.htm" title="VPN设备 | 7月18日23M/S|免费VPN/Shadowrocket/SSR/Clash/V2ray免费节点订阅分享">VPN设备 | 7月18日23M/S|免费VPN/Shadowrocket/SSR/Clash/V2ray免费节点订阅分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-15-vpn-proxy.htm" title="VPN设备 | 8月15日19.1M/S|免费VPN/SSR/V2ray/Clash/Shadowrocket免费节点订阅分享">VPN设备 | 8月15日19.1M/S|免费VPN/SSR/V2ray/Clash/Shadowrocket免费节点订阅分享</a></li>
-                        <li class="py-2"><a href="/news/article-149746.htm" title="全面解析电脑V2Ray连接故障：从诊断到修复的完整指南">全面解析电脑V2Ray连接故障：从诊断到修复的完整指南</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-24-top-vpn.htm" title="VPN设备 | 7月24日21.7M/S|免费VPN/V2ray/Clash/SSR/Shadowrocket免费节点订阅分享">VPN设备 | 7月24日21.7M/S|免费VPN/V2ray/Clash/SSR/Shadowrocket免费节点订阅分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-11-top-vpn-node.htm" title="VPN设备 | 8月11日22.1M/S|免费VPN/SSR/V2ray/Clash/Shadowrocket免费节点订阅分享">VPN设备 | 8月11日22.1M/S|免费VPN/SSR/V2ray/Clash/Shadowrocket免费节点订阅分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-17-free-node-subscribe.htm" title="VPN设备 | 7月17日18.7M/S|免费VPN/SSR/V2ray/Shadowrocket/Clash免费节点订阅分享">VPN设备 | 7月17日18.7M/S|免费VPN/SSR/V2ray/Shadowrocket/Clash免费节点订阅分享</a></li>
-                        <li class="py-2"><a href="/news/article-150836.htm" title="探索vmess其他端口的奥秘：配置技巧与安全实践">探索vmess其他端口的奥秘：配置技巧与安全实践</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-3-vpn-proxy.htm" title="VPN设备 | 8月3日20.8M/S|免费VPN/Clash/SSR/V2ray/Shadowrocket免费节点订阅分享">VPN设备 | 8月3日20.8M/S|免费VPN/Clash/SSR/V2ray/Shadowrocket免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-154394.htm" title="深度解析GeoIP冲突：成因、影响与系统化解决方案">深度解析GeoIP冲突：成因、影响与系统化解决方案</a></li>
+                        <li class="py-2"><a href="/news/article-153300.htm" title="突破数字边界：2023年3月4日最新v2ray节点全面获取与配置实战指南">突破数字边界：2023年3月4日最新v2ray节点全面获取与配置实战指南</a></li>
+                        <li class="py-2"><a href="/news/article-147735.htm" title="深度指南：Shadowrocket安卓汉化版全方位使用手册——从入门到精通">深度指南：Shadowrocket安卓汉化版全方位使用手册——从入门到精通</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-21-free-vpn.htm" title="推荐VPN | 9月21日21.8M/S|免费VPN/Shadowrocket节点/Clash节点/V2ray节点/SSR免费节点链接地址">推荐VPN | 9月21日21.8M/S|免费VPN/Shadowrocket节点/Clash节点/V2ray节点/SSR免费节点链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -180,10 +185,10 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-07/" title="2025-07 归档">2025-07</a></h4>
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
             </li>
                     </ul>
     </div>
@@ -211,8 +216,10 @@
             </div>
             <div class="col-md-4">
                 <p class="footer2-paragraph d-flex justify-content-center justify-content-md-end">
-                                        <p>
+                                        <p>本站内容仅供学习与技术研究用途，无意传播或倡导任何违反法律法规的行为。在此声明：用户须自行了解所在地法律法规，合法合规使用；因使用不当产生的法律责任，与本站及作者无关；请在使用前仔细阅读本声明，继续使用即视为同意以上条款。</p>
+                    <p>
                                                 <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
                                                 <a href="/paid-subscribe/">推荐机场</a> |
                                                 <a href="/news/">新闻资讯</a> |
                                                 <a href="/client.htm">客户端</a> |
@@ -221,7 +228,7 @@
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                    推荐VPN 订阅链接节点官网 版权所有 Powered by WordPress
+                                        推荐VPN 订阅链接节点官网 版权所有 Powered by WordPress
                 </p>
             </div>
         </footer>
