@@ -1,4 +1,4 @@
-# 推荐VPN | 6月20日19.4M/S|免费VPN/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点免费节点链接地址  更新时间 2026-06-20 09:57:59
+# 推荐VPN | 6月27日18.6M/S|免费VPN/Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Singbox节点免费节点链接地址  更新时间 2026-06-27 08:49:24
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://tuijianvpn.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://tuijianvpn.github.io/uploads/2026/06/0-20260620.yaml
-- https://tuijianvpn.github.io/uploads/2026/06/1-20260620.yaml
-- https://tuijianvpn.github.io/uploads/2026/06/2-20260620.yaml
-- https://tuijianvpn.github.io/uploads/2026/06/3-20260620.yaml
-- https://tuijianvpn.github.io/uploads/2026/06/4-20260620.yaml
+- https://tuijianvpn.github.io/uploads/2026/06/0-20260627.yaml
+- https://tuijianvpn.github.io/uploads/2026/06/1-20260627.yaml
+- https://tuijianvpn.github.io/uploads/2026/06/2-20260627.yaml
+- https://tuijianvpn.github.io/uploads/2026/06/3-20260627.yaml
+- https://tuijianvpn.github.io/uploads/2026/06/4-20260627.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://tuijianvpn.github.io/uploads/2026/06/0-20260620.txt
-- https://tuijianvpn.github.io/uploads/2026/06/1-20260620.txt
-- https://tuijianvpn.github.io/uploads/2026/06/2-20260620.txt
-- https://tuijianvpn.github.io/uploads/2026/06/3-20260620.txt
-- https://tuijianvpn.github.io/uploads/2026/06/4-20260620.txt
+- https://tuijianvpn.github.io/uploads/2026/06/0-20260627.txt
+- https://tuijianvpn.github.io/uploads/2026/06/1-20260627.txt
+- https://tuijianvpn.github.io/uploads/2026/06/2-20260627.txt
+- https://tuijianvpn.github.io/uploads/2026/06/3-20260627.txt
+- https://tuijianvpn.github.io/uploads/2026/06/4-20260627.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://tuijianvpn.github.io/uploads/2026/06/20260620.json
+- https://tuijianvpn.github.io/uploads/2026/06/20260627.json
 
 ## 更多Clash节点订阅 ：
 
