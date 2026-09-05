@@ -398,19 +398,9 @@ A：确保关闭WebRTC、配置DNS代理并开启系统代理，即可最大程�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 的分组策略可以自动切换节点吗？</h5></div>
+    <div class="panel-heading"><h5>QuantumultX 支持哪些类型的重写脚本？</h5></div>
     <div class="panel-body">
-        可以。用户可以设置策略组，PassWall2 会定期测速并根据延迟或成功率自动选择最优节点，实现智能节点切换，保证网络稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 如何防止流量被 DPI 检测？</h5></div>
-    <div class="panel-body">
-        通过协议插件和混淆方式可以模拟正常 HTTPS 或 HTTP 流量，隐藏真实流量特征。合理配置混淆插件和加密方式，可以有效绕过 DPI 检测，保证连接稳定性和长期可用性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 的节点导入方式有哪些？</h5></div>
-    <div class="panel-body">
-        Potatso Lite 支持通过手动添加节点信息或扫描二维码导入节点。虽然不支持自动订阅更新，但对轻量用户来说，手动方式足够使用，方便在 iOS 设备上管理节点。<hr />    </div>
+        QuantumultX 支持 JavaScript 脚本，可修改请求头、响应内容、自动跳转、广告屏蔽和定制流量处理。结合策略组，可实现高度个性化的网络访问控制和优化。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 如何精确匹配端口流量？</h5></div>
@@ -418,9 +408,34 @@ A：确保关闭WebRTC、配置DNS代理并开启系统代理，即可最大程�
         Sing-box 支持按端口设置流量分流规则，将不同类型流量分配到不同节点。结合策略组使用，可提高访问速度和稳定性，实现精准流量管理和优化网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 如何通过策略组优化科学上网？</h5></div>
+    <div class="panel-body">
+        PassWall2 结合策略组和节点延迟检测功能，可自动选择最佳节点处理网页、视频和游戏流量。无需手动干预，保证访问速度和网络稳定性，提高整体体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 的节点导入方式有哪些？</h5></div>
+    <div class="panel-body">
+        Potatso Lite 支持通过手动添加节点信息或扫描二维码导入节点。虽然不支持自动订阅更新，但对轻量用户来说，手动方式足够使用，方便在 iOS 设备上管理节点。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>VLESS + XTLS 的传输效率比 Trojan 高吗？</h5></div>
     <div class="panel-body">
         在高延迟环境下，VLESS + XTLS 的性能通常比 Trojan 高。XTLS 去掉了冗余加密开销，降低 CPU 占用，提高多连接场景下的吞吐率，尤其在服务器高负载情况下表现更佳。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 的分组策略可以自动切换节点吗？</h5></div>
+    <div class="panel-body">
+        可以。用户可以设置策略组，PassWall2 会定期测速并根据延迟或成功率自动选择最优节点，实现智能节点切换，保证网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Matsuri 是否支持自动测速节点？</h5></div>
+    <div class="panel-body">
+        支持。Matsuri 可以自动对订阅中的节点进行延迟和速度测试，并按测试结果排序，用户可快速选择最佳节点，提升整体网络使用体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 如何防止流量被 DPI 检测？</h5></div>
+    <div class="panel-body">
+        通过协议插件和混淆方式可以模拟正常 HTTPS 或 HTTP 流量，隐藏真实流量特征。合理配置混淆插件和加密方式，可以有效绕过 DPI 检测，保证连接稳定性和长期可用性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VLESS 的 XTLS 模式能提升传输效率吗？</h5></div>
@@ -428,24 +443,9 @@ A：确保关闭WebRTC、配置DNS代理并开启系统代理，即可最大程�
         XTLS 模式通过减少冗余加密和握手次数，降低延迟，提高吞吐量。在高并发和短连接场景下，效率明显优于普通 TLS，同时保持数据安全性和隐蔽性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 支持哪些类型的重写脚本？</h5></div>
-    <div class="panel-body">
-        QuantumultX 支持 JavaScript 脚本，可修改请求头、响应内容、自动跳转、广告屏蔽和定制流量处理。结合策略组，可实现高度个性化的网络访问控制和优化。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 如何通过策略组优化科学上网？</h5></div>
-    <div class="panel-body">
-        PassWall2 结合策略组和节点延迟检测功能，可自动选择最佳节点处理网页、视频和游戏流量。无需手动干预，保证访问速度和网络稳定性，提高整体体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 全局代理与规则代理如何选择？</h5></div>
     <div class="panel-body">
-        全局代理会将所有流量通过节点转发，适合游戏或全局科学上网；规则代理只针对指定应用、IP 或端口走节点，可优化带宽使用和访问效率，根据需求灵活选择模式。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 是否支持自动测速节点？</h5></div>
-    <div class="panel-body">
-        支持。Matsuri 可以自动对订阅中的节点进行延迟和速度测试，并按测试结果排序，用户可快速选择最佳节点，提升整体网络使用体验。    </div>
+        全局代理会将所有流量通过节点转发，适合游戏或全局科学上网；规则代理只针对指定应用、IP 或端口走节点，可优化带宽使用和访问效率，根据需求灵活选择模式。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -493,16 +493,16 @@ A：确保关闭WebRTC、配置DNS代理并开启系统代理，即可最大程�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-8-6-vpn-free.htm" title="推荐VPN | 8月6日20.2M/S|免费VPN/Singbox节点/Trojan节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点免费节点链接地址">推荐VPN | 8月6日20.2M/S|免费VPN/Singbox节点/Trojan节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点免费节点链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-16-vpn-node.htm" title="推荐VPN | 7月16日18.7M/S|免费VPN/Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Trojan节点免费节点链接地址">推荐VPN | 7月16日18.7M/S|免费VPN/Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Trojan节点免费节点链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-1.htm" title="推荐VPN | 8月1日19.1M/S|免费VPN/Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/Clash节点/V2ray节点免费节点链接地址">推荐VPN | 8月1日19.1M/S|免费VPN/Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/Clash节点/V2ray节点免费节点链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-15-free-node-subscribe-links.htm" title="推荐VPN | 7月15日19.8M/S|免费VPN/V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Trojan节点/Singbox节点免费节点链接地址">推荐VPN | 7月15日19.8M/S|免费VPN/V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Trojan节点/Singbox节点免费节点链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-14-vpn-free.htm" title="推荐VPN | 7月14日20.7M/S|免费VPN/V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点免费节点链接地址">推荐VPN | 7月14日20.7M/S|免费VPN/V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点免费节点链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-26-vpn-free.htm" title="推荐VPN | 7月26日18.9M/S|免费VPN/Singbox节点/V2ray节点/Clash节点/SSR节点/Trojan节点/Shadowrocket节点免费节点链接地址">推荐VPN | 7月26日18.9M/S|免费VPN/Singbox节点/V2ray节点/Clash节点/SSR节点/Trojan节点/Shadowrocket节点免费节点链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/share-vpn-2026-8-11.htm" title="推荐VPN | 8月11日21M/S|免费VPN/SSR节点/V2ray节点/Clash节点/Trojan节点/Shadowrocket节点/Singbox节点免费节点链接地址">推荐VPN | 8月11日21M/S|免费VPN/SSR节点/V2ray节点/Clash节点/Trojan节点/Shadowrocket节点/Singbox节点免费节点链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-28-free-vpn-node.htm" title="推荐VPN | 7月28日21M/S|免费VPN/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/Trojan节点/SSR节点免费节点链接地址">推荐VPN | 7月28日21M/S|免费VPN/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/Trojan节点/SSR节点免费节点链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-26-free-node-subscribe.htm" title="推荐VPN | 8月26日21.8M/S|免费VPN/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点/SSR节点免费节点链接地址">推荐VPN | 8月26日21.8M/S|免费VPN/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点/SSR节点免费节点链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-24-vpn-proxy.htm" title="推荐VPN | 8月24日21.5M/S|免费VPN/Singbox节点/V2ray节点/Clash节点/SSR节点/Trojan节点/Shadowrocket节点免费节点链接地址">推荐VPN | 8月24日21.5M/S|免费VPN/Singbox节点/V2ray节点/Clash节点/SSR节点/Trojan节点/Shadowrocket节点免费节点链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/share-vpn-2026-9-1.htm" title="推荐VPN | 9月1日18.7M/S|免费VPN/Trojan节点/V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点免费节点链接地址">推荐VPN | 9月1日18.7M/S|免费VPN/Trojan节点/V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点免费节点链接地址</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/free-vpn-2026-8-7.htm" title="推荐VPN | 8月7日21.7M/S|免费VPN/Clash节点/Singbox节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点免费节点链接地址">推荐VPN | 8月7日21.7M/S|免费VPN/Clash节点/Singbox节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点免费节点链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/share-vpn-2026-8-15.htm" title="推荐VPN | 8月15日22.7M/S|免费VPN/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点/Trojan节点免费节点链接地址">推荐VPN | 8月15日22.7M/S|免费VPN/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点/Trojan节点免费节点链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-8-13.htm" title="推荐VPN | 8月13日18.2M/S|免费VPN/Trojan节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点/Clash节点免费节点链接地址">推荐VPN | 8月13日18.2M/S|免费VPN/Trojan节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点/Clash节点免费节点链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-21.htm" title="推荐VPN | 8月21日18.6M/S|免费VPN/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点免费节点链接地址">推荐VPN | 8月21日18.6M/S|免费VPN/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点免费节点链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-vpn-2026-8-29.htm" title="推荐VPN | 8月29日21M/S|免费VPN/V2ray节点/SSR节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点免费节点链接地址">推荐VPN | 8月29日21M/S|免费VPN/V2ray节点/SSR节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点免费节点链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-31.htm" title="推荐VPN | 8月31日20.8M/S|免费VPN/Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Singbox节点/Trojan节点免费节点链接地址">推荐VPN | 8月31日20.8M/S|免费VPN/Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Singbox节点/Trojan节点免费节点链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/share-vpn-2026-8-17.htm" title="推荐VPN | 8月17日21.3M/S|免费VPN/Trojan节点/Singbox节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点免费节点链接地址">推荐VPN | 8月17日21.3M/S|免费VPN/Trojan节点/Singbox节点/SSR节点/Clash节点/V2ray节点/Shadowrocket节点免费节点链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-23.htm" title="推荐VPN | 8月23日18M/S|免费VPN/Clash节点/Shadowrocket节点/SSR节点/V2ray节点/Singbox节点/Trojan节点免费节点链接地址">推荐VPN | 8月23日18M/S|免费VPN/Clash节点/Shadowrocket节点/SSR节点/V2ray节点/Singbox节点/Trojan节点免费节点链接地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -514,10 +514,10 @@ A：确保关闭WebRTC、配置DNS代理并开启系统代理，即可最大程�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                     </ul>
     </div>
